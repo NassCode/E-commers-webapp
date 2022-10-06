@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { client } from "../index";
 import { CATEGORIES } from "../GraphQL/Queries";
-
+import Item from "./Item";
 
 export default class PLP extends Component {
   state = {
@@ -15,7 +15,7 @@ export default class PLP extends Component {
       })
       .then((result) => {
         this.setState({
-          categories: result.data.categories,
+          categories: result.data.categories[0].products,
         });
       });
   }
@@ -29,13 +29,11 @@ export default class PLP extends Component {
     return (
       <div>
         <h1>Categories</h1>
-        <ul>
-          {categories.map((category, i) => (
-            <li key={i}>{category.name}</li>
+        <div className="PLPcontainer">
+          {categories.map((product) => (
+            <Item productProps={product} />
           ))}
-        </ul>
-        
-       
+        </div>
       </div>
     );
   }

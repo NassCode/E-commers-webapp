@@ -1,38 +1,80 @@
-.App {
-  text-align: center;
+body {
+  background-color: #ffffff;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.navbar {
+  margin: 20px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.container {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  gap: 10px 20px;
+  row-gap: 10px;
+  column-gap: 20px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.categoriesContainer {
+  display: flex;
+  justify-content: flex-start;
+  gap: 10px;
+  gap: 10px 20px;
+  row-gap: 10px;
+  column-gap: 20px;
+}
+
+.cartContainer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  gap: 10px 20px;
+  row-gap: 10px;
+  column-gap: 20px;
+}
+
+.PLPcontainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  gap: 10px;
+  gap: 10px 10px;
+  row-gap: 50px;
+  column-gap: 45px;
+  margin-bottom: 30px;
+}
+
+.PLPimage {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.PLPimageContainer {
+  position: relative;
+  width: 354px;
+  height: 330px;
+}
+
+.PLPitem {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  align-items: flex-start;
+  gap: 10px;
+  width: 354px;
+  height: auto;
+  padding: 10px;
+  transition: box-shadow 0.3s;
 }
 
-.App-link {
-  color: #61dafb;
+.PLPitemInfo {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 15px;
+  gap: 8px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.PLPitem:hover {
+  box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
 }
