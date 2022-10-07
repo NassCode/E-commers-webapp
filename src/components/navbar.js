@@ -7,17 +7,16 @@ class Navbar extends Component {
 
 
   render() {
-    console.log(this.props)
-
+    
     return (
       <div className="navbar container">
         <div className="categoriesContainer">
           
-          <span>All</span>
+          <span onClick={() => this.props.tabChange('All')}>All</span>
 
-          <span>Clothes</span>
+          <span onClick={() => this.props.tabChange('Clothes')}>Clothes</span>
 
-          <span>Tech</span>
+          <span onClick={() => this.props.tabChange('Tech')}>Tech</span>
 
         </div>
 

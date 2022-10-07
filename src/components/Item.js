@@ -3,7 +3,6 @@ import cartOutline from "./icons/cart-outline.svg";
 
 class Item extends Component {
   render() {
-    console.log(this.props.productProps);
 
     return (
       <div className="PLPitem">

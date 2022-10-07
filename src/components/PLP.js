@@ -8,7 +8,15 @@ import Navbar from "./navbar";
 export default class PLP extends Component {
   state = {
     categories: [],
+    currentTab: 'All'
   };
+
+  tabChange = (tab) => {
+    this.setState({ currentTab: tab })
+    console.log(this.state)
+  }
+
+
 
   componentDidMount() {
     client
@@ -27,18 +35,18 @@ export default class PLP extends Component {
       return (
         <div>
           <div>
-            <Navbar />
+            <Navbar currentTab={this.state.currentTab} tabChange={this.tabChange}/>
           </div>
           <div>Loading...</div>
       </div>
       )
     }
     const { categories } = this.state;
-    console.log(categories);
+
     return (
       <div>
         <div>
-          <Navbar />
+          <Navbar currentTab={this.state.currentTab} tabChange={this.tabChange}/>
         </div>
         <h1>Categories</h1>
         <div className="PLPcontainer">
