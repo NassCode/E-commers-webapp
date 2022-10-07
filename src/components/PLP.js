@@ -4,19 +4,16 @@ import { CATEGORIES } from "../GraphQL/Queries";
 import Item from "./Item";
 import Navbar from "./navbar";
 
-
 export default class PLP extends Component {
   state = {
     categories: [],
-    currentTab: 'All'
+    currentTab: "All",
   };
 
   tabChange = (tab) => {
-    this.setState({ currentTab: tab })
-    console.log(this.state)
-  }
-
-
+    this.setState({ currentTab: tab });
+    console.log(this.state);
+  };
 
   componentDidMount() {
     client
@@ -35,25 +32,50 @@ export default class PLP extends Component {
       return (
         <div>
           <div>
-            <Navbar currentTab={this.state.currentTab} tabChange={this.tabChange}/>
+            <Navbar
+              currentTab={this.state.currentTab}
+              tabChange={this.tabChange}
+            />
           </div>
           <div>Loading...</div>
-      </div>
-      )
+        </div>
+      );
     }
     const { categories } = this.state;
 
     return (
       <div>
         <div>
-          <Navbar currentTab={this.state.currentTab} tabChange={this.tabChange}/>
+          <Navbar
+            currentTab={this.state.currentTab}
+            tabChange={this.tabChange}
+          />
         </div>
         <h1>Categories</h1>
-        <div className="PLPcontainer">
-          {categories[0].products.map((product, i) => (
-            <Item key={i} productProps={product} />
-          ))}
-        </div>
+
+        {this.state.currentTab === "All" && (
+          <div className="PLPcontainer">
+            {categories[0].products.map((product, i) => (
+              <Item key={i} productProps={product} />
+            ))}
+          </div>
+        )}
+
+        {this.state.currentTab === "Clothes" && (
+          <div className="PLPcontainer">
+            {categories[1].products.map((product, i) => (
+              <Item key={i} productProps={product} />
+            ))}
+          </div>
+        )}
+
+        {this.state.currentTab === "Tech" && (
+          <div className="PLPcontainer">
+            {categories[2].products.map((product, i) => (
+              <Item key={i} productProps={product} />
+            ))}
+          </div>
+        )}
       </div>
     );
   }
