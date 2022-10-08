@@ -5,55 +5,19 @@ import Item from "./Item";
 import Navbar from "./navbar";
 
 export default class PLP extends Component {
-  state = {
-    categories: [],
-    currentTab: "All",
-  };
-
-  tabChange = (tab) => {
-    this.setState({ currentTab: tab });
-    console.log(this.state);
-  };
-
-  componentDidMount() {
-    client
-      .query({
-        query: CATEGORIES,
-      })
-      .then((result) => {
-        this.setState({
-          categories: result.data.categories,
-        });
-      });
-  }
+  
 
   render() {
-    if (this.state.categories.length === 0) {
-      return (
-        <div>
-          <div>
-            <Navbar
-              currentTab={this.state.currentTab}
-              tabChange={this.tabChange}
-            />
-          </div>
-          <div>Loading...</div>
-        </div>
-      );
-    }
-    const { categories } = this.state;
+    // clean this up
+    
+    const { categories } = this.props;
 
     return (
       <div>
-        <div>
-          <Navbar
-            currentTab={this.state.currentTab}
-            tabChange={this.tabChange}
-          />
-        </div>
+        
         <h1>Categories</h1>
 
-        {this.state.currentTab === "All" && (
+        {this.props.currentTab === "All" && (
           <div className="PLPcontainer">
             {categories[0].products.map((product, i) => (
               <Item key={i} productProps={product} />
@@ -61,7 +25,7 @@ export default class PLP extends Component {
           </div>
         )}
 
-        {this.state.currentTab === "Clothes" && (
+        {this.props.currentTab === "Clothes" && (
           <div className="PLPcontainer">
             {categories[1].products.map((product, i) => (
               <Item key={i} productProps={product} />
@@ -69,7 +33,7 @@ export default class PLP extends Component {
           </div>
         )}
 
-        {this.state.currentTab === "Tech" && (
+        {this.props.currentTab === "Tech" && (
           <div className="PLPcontainer">
             {categories[2].products.map((product, i) => (
               <Item key={i} productProps={product} />

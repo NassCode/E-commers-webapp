@@ -3,13 +3,66 @@ import "./App.css";
 // import class component
 import React, { Component } from "react";
 import PLP from "./components/PLP";
+import Navbar from "./components/navbar";
+import { client } from "./index";
+import { CATEGORIES } from "./GraphQL/Queries";
 
 
 class App extends Component {
+  state = {
+    categories: [],
+    currentTab: "All",
+    location: "PLP",
+    currency: "USD",
+  }
+
+  componentDidMount() {
+    client
+      .query({
+        query: CATEGORIES,
+      })
+      .then((result) => {
+        this.setState({
+          categories: result.data.categories,
+        });
+      });
+  }
+
+  tabChange = (tab) => {
+    this.setState({ currentTab: tab });
+  }
+
+  changeLocation = (location) => {
+    this.setState({ location: location });
+  }
+
+  changeCurrency = (currency) => {
+    this.setState({ currency: currency });
+  }
+
+
   render() {
     return (
       <div>
-        <PLP />
+        <div>
+          <Navbar tabChange={this.tabChange} currentTab={this.state.currentTab}/>
+        </div>
+        <div>
+          { this.state.categories.length === 0 && 
+            <div>Loading...</div>
+              // implement loading screen
+              // implement what component to render based on state
+          }
+        </div>
+        <div>
+          { this.state.location === "PLP" && this.state.categories.length !== 0
+          ? <PLP categories={this.state.categories} 
+                 currentTab={this.state.currentTab} />
+          : null
+          }
+        </div>
+
+       
       </div>
     );
   }
