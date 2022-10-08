@@ -5,8 +5,12 @@ class PDP extends Component {
     console.log(this.props.pdpItem);
 
     return (
-      <div className="App">
-        <h1>{this.props.pdpItem.id}</h1>
+      <div className="PDPcontainer">
+        <div className="App"></div>
+          <button onClick={() => this.props.changeLocation('PLP')}>Back</button>
+        <div>
+          <h1>{this.props.pdpItem.id}</h1>
+        </div>
       </div>
     );
   }

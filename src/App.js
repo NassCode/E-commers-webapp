@@ -74,7 +74,8 @@ class App extends Component {
 
           {this.state.location === "PDP" &&
           this.state.categories.length !== 0 ? (
-            <PDP pdpItem={this.state.pdpItem} />
+            <PDP pdpItem={this.state.pdpItem} 
+                 changeLocation={this.changeLocation}/>
           ) : null}
         </div>
       </div>
