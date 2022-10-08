@@ -42,7 +42,7 @@ class App extends Component {
     this.setState({ currency: currency });
   };
 
-  changePDPItem = (item, location) => {
+  selectPDPItem = (item, location) => {
     this.setState({ pdpItem: item, location: location });
   };
 
@@ -69,7 +69,7 @@ class App extends Component {
               categories={this.state.categories}
               currentTab={this.state.currentTab}
               changeLocation={this.changeLocation}
-              changePDPItem={this.changePDPItem}
+              selectPDPItem={this.selectPDPItem}
             />
           ) : null}
 

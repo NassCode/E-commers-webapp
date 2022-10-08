@@ -6,7 +6,7 @@ class Item extends Component {
     return (
       <div
         className="PLPitem"
-        onClick={() => this.props.changePDPItem(this.props.productProps, "PDP")}
+        onClick={() => this.props.selectPDPItem(this.props.productProps, "PDP")}
       >
         <div className="PLPimageContainer">
           <img
