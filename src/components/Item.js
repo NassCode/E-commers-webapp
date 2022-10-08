@@ -3,9 +3,11 @@ import cartOutline from "./icons/cart-outline.svg";
 
 class Item extends Component {
   render() {
-
     return (
-      <div className="PLPitem">
+      <div
+        className="PLPitem"
+        onClick={() => this.props.changePDPItem(this.props.productProps, "PDP")}
+      >
         <div className="PLPimageContainer">
           <img
             className="PLPimage"
