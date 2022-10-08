@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import PDPGallery from "./PDPGallery";
+
 
 class PDP extends Component {
   render() {
@@ -10,6 +12,7 @@ class PDP extends Component {
           <button onClick={() => this.props.changeLocation('PLP')}>Back</button>
         <div>
           <h1>{this.props.pdpItem.id}</h1>
+          <PDPGallery pics={this.props.pdpItem.gallery} />
         </div>
       </div>
     );
