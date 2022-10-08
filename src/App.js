@@ -30,7 +30,8 @@ class App extends Component {
   }
 
   tabChange = (tab) => {
-    this.setState({ currentTab: tab });
+    this.setState({ currentTab: tab,
+                    location: "PLP" });
   };
 
   changeLocation = (location) => {
