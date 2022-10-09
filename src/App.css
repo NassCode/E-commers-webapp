@@ -78,3 +78,18 @@ body {
 .PLPitem:hover {
   box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
 }
+
+.galleryImagesContainer {
+  display: flex;
+  flex-direction: column;
+  width: 20%;
+  height: 400px;
+  overflow: scroll;
+  overflow-x: hidden;
+}
+
+
+.PDPgallery {
+  display: flex;
+  flex-direction: row;
+}
