@@ -47,6 +47,7 @@ class App extends Component {
   };
 
   render() {
+    console.log(this.state.categories);
     return (
       <div>
         <div>

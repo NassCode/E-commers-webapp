@@ -5,7 +5,7 @@ class PDPGallery extends Component {
     console.log(this.props.pics);
     return (
       <div className="PDPgalary">
-        <div className="PDPgalary__container">
+        <div className="PDPgalary_container">
           <div className="PDPgalary__container__img">
             <img src={this.props.pics[0]} />
           </div>
