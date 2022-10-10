@@ -16,12 +16,12 @@ class PDPGallery extends Component {
       <div className="PDPgallery">
         <div className="galleryImagesContainer">
           {this.props.pics.map((pic, i) => (
-            <img src={pic} alt="" key={i} onClick={() => this.setCurrentPic(i)}/>
+            <img className="galleryImage" src={pic} alt="" key={i} onClick={() => this.setCurrentPic(i)}/>
           ))}
           
         </div>
         <div>
-          <img src={this.props.pics[this.state.currentPic]} alt="" />
+          <img className="PDPimage" src={this.props.pics[this.state.currentPic]} alt="" />
         </div>
         
       </div>
