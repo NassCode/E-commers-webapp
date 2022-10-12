@@ -122,3 +122,8 @@ body {
   object-fit: contain;
 }
 
+.itemAtrrs {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+}
