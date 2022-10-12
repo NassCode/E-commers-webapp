@@ -3,7 +3,17 @@ import PDPGallery from "./PDPGallery";
 import Attrs from "./attrs";
 
 class PDP extends Component {
+  state = {
+
+  }
+
+  setAttrs = (id, value) => {
+    this.setState({ [id]: value });
+  };
+
+
   render() {
+    console.log(this.state)
     return (
       <div>
         <div>
@@ -14,7 +24,7 @@ class PDP extends Component {
             <PDPGallery pics={this.props.pdpItem.gallery} />
           </div>
           <div>
-            <Attrs attrs={this.props.pdpItem} />
+            <Attrs attrs={this.props.pdpItem} setAttrs={this.setAttrs}/>
           </div>
         </div>
       </div>

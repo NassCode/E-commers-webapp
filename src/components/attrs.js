@@ -2,7 +2,6 @@ import React, { Component } from "react";
 
 class Attrs extends Component {
   render() {
-    console.log(this.props.attrs);
     return (
       <div className="Attrs">
         <div className="Attrs__container">
@@ -17,7 +16,9 @@ class Attrs extends Component {
                 <div className="itemAtrrs">
                   {attr.items.map((item, i) => (
                     <div key={item.id}>
-                      <h1>{item.displayValue}</h1>
+                      <h1 onClick={() => this.props.setAttrs(attr.name, item.value)}>
+                        {item.displayValue}
+                        </h1>
                     </div>
                   ))}
                 </div>
@@ -33,7 +34,9 @@ class Attrs extends Component {
             <div>
               <button>add to cart</button>
             </div>
-            <div>{this.props.attrs.description}</div>
+            <div dangerouslySetInnerHTML={{__html: this.props.attrs.description}} />
+              
+            
           </div>
         </div>
       </div>

@@ -10,11 +10,10 @@ class PDPGallery extends Component {
   };
 
   render() {
-    console.log(this.props.pics);
     return (
       <div className="PDPgallery">
         {this.props.pics.length > 1 ? (
-          <div>
+          <div className="PDPgallery">
             <div className="galleryImagesContainer">
               {this.props.pics.map((pic, i) => (
                 <img
