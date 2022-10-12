@@ -1,29 +1,48 @@
-import React, {Component} from "react";
+import React, { Component } from "react";
 
 class PDPGallery extends Component {
   state = {
-    currentPic: 0
-  }
+    currentPic: 0,
+  };
 
   setCurrentPic = (i) => {
-    this.setState({currentPic: i})
-  }
-
+    this.setState({ currentPic: i });
+  };
 
   render() {
     console.log(this.props.pics);
     return (
       <div className="PDPgallery">
-        <div className="galleryImagesContainer">
-          {this.props.pics.map((pic, i) => (
-            <img className="galleryImage" src={pic} alt="" key={i} onClick={() => this.setCurrentPic(i)}/>
-          ))}
-          
-        </div>
-        <div>
-          <img className="PDPimage" src={this.props.pics[this.state.currentPic]} alt="" />
-        </div>
-        
+        {this.props.pics.length > 1 ? (
+          <div>
+            <div className="galleryImagesContainer">
+              {this.props.pics.map((pic, i) => (
+                <img
+                  className="galleryImage"
+                  src={pic}
+                  alt=""
+                  key={i}
+                  onClick={() => this.setCurrentPic(i)}
+                />
+              ))}
+            </div>
+            <div>
+              <img
+                className="PDPimage"
+                src={this.props.pics[this.state.currentPic]}
+                alt=""
+              />
+            </div>
+          </div>
+        ) : (
+          <div>
+            <img
+              className="PDPimage"
+              src={this.props.pics[this.state.currentPic]}
+              alt=""
+            />
+          </div>
+        )}
       </div>
     );
   }
