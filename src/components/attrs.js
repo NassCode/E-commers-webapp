@@ -1,7 +1,17 @@
 import React, { Component } from "react";
 
 class Attrs extends Component {
+
+  // componentDidMount() {
+  //   // update state with default values
+  //   this.props.attrs.attributes.forEach((attr) => {
+  //     this.props.setAttrs(attr.id, attr.items[0].id, attr.items[0].value);
+  //   });
+  // }
+
+
   render() {
+    // console.log(this.props.attrs)
     return (
       <div className="Attrs">
         <div className="Attrs__container">
@@ -16,7 +26,7 @@ class Attrs extends Component {
                 <div className="itemAtrrs">
                   {attr.items.map((item, i) => (
                     <div key={item.id}>
-                      <h1 onClick={() => this.props.setAttrs(attr.name, item.value)}>
+                      <h1 onClick={() => this.props.setAttrs(this.props.attrs.id, attr.name, item.value)}>
                         {item.displayValue}
                         </h1>
                     </div>
@@ -32,7 +42,7 @@ class Attrs extends Component {
               </h1>
             </div>
             <div>
-              <button>add to cart</button>
+              <button onClick={() => this.props.addToCart(this.props.stateToSubmit)}>add to cart</button>
             </div>
             <div dangerouslySetInnerHTML={{__html: this.props.attrs.description}} />
               

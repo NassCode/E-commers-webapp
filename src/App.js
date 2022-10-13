@@ -15,6 +15,7 @@ class App extends Component {
     location: "PLP",
     currency: "USD",
     pdpItem: {},
+    cart: []
   };
 
   componentDidMount() {
@@ -46,8 +47,12 @@ class App extends Component {
     this.setState({ pdpItem: item, location: location });
   };
 
+  addToCart = (item) => {
+    this.setState({ cart: [...this.state.cart, item] });
+  };
+
   render() {
-    console.log(this.state.categories);
+    console.log(this.state.cart);
     return (
       <div>
         <div>
@@ -77,7 +82,8 @@ class App extends Component {
           {this.state.location === "PDP" &&
           this.state.categories.length !== 0 ? (
             <PDP pdpItem={this.state.pdpItem} 
-                 changeLocation={this.changeLocation}/>
+                 changeLocation={this.changeLocation}
+                 addToCart={this.addToCart} />
           ) : null}
         </div>
       </div>
