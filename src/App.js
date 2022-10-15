@@ -15,7 +15,8 @@ class App extends Component {
     location: "PLP",
     currency: "USD",
     pdpItem: {},
-    cart: []
+    cart: [],
+    cartOverlay: false
   };
 
   componentDidMount() {
@@ -51,6 +52,10 @@ class App extends Component {
     this.setState({ cart: [...this.state.cart, item] });
   };
 
+  toggleCartOverlay = () => {
+    this.setState({ cartOverlay: !this.state.cartOverlay });
+  };
+
   render() {
     console.log(this.state.cart);
     return (
@@ -59,6 +64,8 @@ class App extends Component {
           <Navbar
             tabChange={this.tabChange}
             currentTab={this.state.currentTab}
+            toggleCartOverlay={this.toggleCartOverlay}
+            cartOverlayState={this.state.cartOverlay}
           />
         </div>
         <div>
