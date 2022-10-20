@@ -5,8 +5,17 @@ class CartOverlay extends Component {
   render() {
     console.log(this.props.cartOverlayState);
     return (
-      <img src={cartOutline} />
-    
+      <div>
+        <img src={cartOutline} />
+        {this.props.cartOverlayState === false ? null : (
+          <div className="cartOverLay">
+            <ul>
+              <li>Item 1</li>
+              <li>Item 2</li>
+            </ul>
+          </div>
+        )}
+      </div>
     );
   }
 }

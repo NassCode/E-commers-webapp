@@ -127,3 +127,19 @@ body {
   flex-direction: row;
   gap: 10px;
 }
+
+.cartOverLay {
+  position: absolute;
+  /* top: 10%; */
+  left: 92%;
+  width: auto;
+  height: auto;
+  /* float: right; */
+
+
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* z-index: 100; */
+}
