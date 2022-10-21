@@ -1,6 +1,26 @@
 import React, { Component } from "react";
 
 class Attrs extends Component {
+  state = {
+    selectedAttrs: [],
+  };
+
+  setAttrs = (id, name, value) => {
+    // replace the value of the item in the state if it already exists
+    let selectedAttrs = this.state.selectedAttrs;
+    let itemExists = false;
+    selectedAttrs.forEach((item, i) => {
+      if (item.name === name) {
+        selectedAttrs[i].value = value;
+        itemExists = true;
+      }
+    });
+    // if the item doesn't exist, add it to the state
+    if (!itemExists) {
+      selectedAttrs.push({ id: id, name: name, value: value });
+    }
+    this.setState({ selectedAttrs: selectedAttrs });
+  };
 
   // componentDidMount() {
   //   // update state with default values
@@ -9,9 +29,8 @@ class Attrs extends Component {
   //   });
   // }
 
-
   render() {
-    // console.log(this.props.attrs)
+    console.log(this.state);
     return (
       <div className="Attrs">
         <div className="Attrs__container">
@@ -20,7 +39,7 @@ class Attrs extends Component {
             <h1>{this.props.attrs.name}</h1>
           </div>
           <div>
-            {this.props.attrs.attributes.map((attr, i) => (
+            {/* {this.props.attrs.attributes.map((attr, i) => (
               <div key={attr.id}>
                 <h1>{attr.name}:</h1>
                 <div className="itemAtrrs">
@@ -29,6 +48,29 @@ class Attrs extends Component {
                       <h1 onClick={() => this.props.setAttrs(this.props.attrs.id, attr.name, item.value)}>
                         {item.displayValue}
                         </h1>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            ))} */}
+
+            {this.props.attrs.attributes.map((attr, i) => (
+              <div key={attr.id}>
+                <h1>{attr.name}:</h1>
+                <div className="itemAtrrs">
+                  {attr.items.map((item, i) => (
+                    <div key={item.id}>
+                      <h1
+                        onClick={() =>
+                          this.setAttrs(
+                            this.props.attrs.id,
+                            attr.name,
+                            item.value
+                          )
+                        }
+                      >
+                        {item.displayValue}
+                      </h1>
                     </div>
                   ))}
                 </div>
@@ -42,11 +84,15 @@ class Attrs extends Component {
               </h1>
             </div>
             <div>
-              <button onClick={() => this.props.addToCart(this.props.stateToSubmit)}>add to cart</button>
+              <button
+                onClick={() => this.props.addToCart(this.props.stateToSubmit)}
+              >
+                add to cart
+              </button>
             </div>
-            <div dangerouslySetInnerHTML={{__html: this.props.attrs.description}} />
-              
-            
+            <div
+              dangerouslySetInnerHTML={{ __html: this.props.attrs.description }}
+            />
           </div>
         </div>
       </div>

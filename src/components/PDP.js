@@ -4,9 +4,12 @@ import Attrs from "./attrs";
 
 class PDP extends Component {
   state = {
-    stateToSubmit: []
+    stateToSubmit: [],
+    
 
   }
+
+
 
   setAttrs = (item, id, value) => {
     // replace the value of the item in the state if it already exists
