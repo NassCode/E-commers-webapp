@@ -4,32 +4,31 @@ import Attrs from "./attrs";
 
 class PDP extends Component {
   state = {
-    stateToSubmit: [],
-    
+    initialSelection: [],
+    itemAttrs: []
+  }
 
+  componentDidMount() {
+    // update state with default values
+    let initSelect = [];
+    this.props.pdpItem.attributes.forEach((attr) => {
+      initSelect.push({id: attr.id, name: attr.name, value: attr.items[0].value})
+
+      // this.setState({initialSelection: [...this.state.initialSelection, {id: attr.id, name: attr.name, value: attr.items[0].value}]})
+      // this.props.setAttrs(attr.id, attr.items[0].id, attr.items[0].value);
+      // console.log(attr)
+      // attr.items.map((item) => {
+      //   // console.log(item)
+      // })
+      // this.setState({ initialSelection: [...this.state.initialSelection, { id: attr.id, name: attr.name, value: attr.items[0].value }] })
+    })
+    this.setState({initialSelection: initSelect});
   }
 
 
-
-  setAttrs = (item, id, value) => {
-    // replace the value of the item in the state if it already exists
-    let stateToSubmit = this.state.stateToSubmit;
-    let itemExists = false;
-    stateToSubmit.forEach((item, i) => {
-      if (item.id === id) {
-        stateToSubmit[i].value = value;
-        itemExists = true;
-      }
-    });
-    // if the item doesn't exist, add it to the state
-    if (!itemExists) {
-      stateToSubmit.push({[item]: {id: id, value: value }});
-    }
-    this.setState({ stateToSubmit: stateToSubmit });
-  };
-
   render() {
     console.log(this.state)
+    console.log(this.props.pdpItem)
     return (
       <div>
         <div>
@@ -41,8 +40,7 @@ class PDP extends Component {
           </div>
           <div>
             <Attrs attrs={this.props.pdpItem} 
-                   setAttrs={this.setAttrs}
-                   stateToSubmit={this.state.stateToSubmit}
+                  
                    addToCart={this.props.addToCart} />
           </div>
         </div>

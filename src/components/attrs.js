@@ -85,7 +85,7 @@ class Attrs extends Component {
             </div>
             <div>
               <button
-                onClick={() => this.props.addToCart(this.props.stateToSubmit)}
+                onClick={() => this.props.addToCart(this.state.selectedAttrs)}
               >
                 add to cart
               </button>
