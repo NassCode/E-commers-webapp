@@ -5,30 +5,25 @@ import Attrs from "./attrs";
 class PDP extends Component {
   state = {
     initialSelection: [],
-    itemAttrs: []
-  }
+    itemAttrs: [],
+  };
 
   componentDidMount() {
     // update state with default values
     let initSelect = [];
     this.props.pdpItem.attributes.forEach((attr) => {
-      initSelect.push({id: attr.id, name: attr.name, value: attr.items[0].value})
-
-      // this.setState({initialSelection: [...this.state.initialSelection, {id: attr.id, name: attr.name, value: attr.items[0].value}]})
-      // this.props.setAttrs(attr.id, attr.items[0].id, attr.items[0].value);
-      // console.log(attr)
-      // attr.items.map((item) => {
-      //   // console.log(item)
-      // })
-      // this.setState({ initialSelection: [...this.state.initialSelection, { id: attr.id, name: attr.name, value: attr.items[0].value }] })
-    })
-    this.setState({initialSelection: initSelect});
+      initSelect.push({
+        id: this.props.pdpItem.id,
+        name: attr.name,
+        value: attr.items[0].value,
+      });
+    });
+    this.setState({ initialSelection: initSelect });
   }
 
-
   render() {
-    console.log(this.state)
-    console.log(this.props.pdpItem)
+    // console.log(this.state);
+    // console.log(this.props.pdpItem);
     return (
       <div>
         <div>
@@ -39,9 +34,11 @@ class PDP extends Component {
             <PDPGallery pics={this.props.pdpItem.gallery} />
           </div>
           <div>
-            <Attrs attrs={this.props.pdpItem} 
-                  
-                   addToCart={this.props.addToCart} />
+            <Attrs
+              attrs={this.props.pdpItem}
+              addToCart={this.props.addToCart}
+              initialSelection={this.state.initialSelection}
+            />
           </div>
         </div>
       </div>

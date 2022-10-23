@@ -5,6 +5,8 @@ class Attrs extends Component {
     selectedAttrs: [],
   };
 
+  
+
   setAttrs = (id, name, value) => {
     // replace the value of the item in the state if it already exists
     let selectedAttrs = this.state.selectedAttrs;
@@ -22,13 +24,6 @@ class Attrs extends Component {
     this.setState({ selectedAttrs: selectedAttrs });
   };
 
-  // componentDidMount() {
-  //   // update state with default values
-  //   this.props.attrs.attributes.forEach((attr) => {
-  //     this.props.setAttrs(attr.id, attr.items[0].id, attr.items[0].value);
-  //   });
-  // }
-
   render() {
     console.log(this.state);
     return (
@@ -39,21 +34,6 @@ class Attrs extends Component {
             <h1>{this.props.attrs.name}</h1>
           </div>
           <div>
-            {/* {this.props.attrs.attributes.map((attr, i) => (
-              <div key={attr.id}>
-                <h1>{attr.name}:</h1>
-                <div className="itemAtrrs">
-                  {attr.items.map((item, i) => (
-                    <div key={item.id}>
-                      <h1 onClick={() => this.props.setAttrs(this.props.attrs.id, attr.name, item.value)}>
-                        {item.displayValue}
-                        </h1>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            ))} */}
-
             {this.props.attrs.attributes.map((attr, i) => (
               <div key={attr.id}>
                 <h1>{attr.name}:</h1>
@@ -85,7 +65,7 @@ class Attrs extends Component {
             </div>
             <div>
               <button
-                onClick={() => this.props.addToCart(this.state.selectedAttrs)}
+                onClick={() => this.props.addToCart(this.state.selectedAttrs.length === 0 ? this.props.initialSelection : this.state.selectedAttrs)}
               >
                 add to cart
               </button>
