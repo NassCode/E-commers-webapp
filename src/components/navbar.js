@@ -18,7 +18,7 @@ class Navbar extends Component {
         <div className="cartContainer">
           <span>$</span>
           <span onClick={() => this.props.toggleCartOverlay()}>
-            <CartOverlay cartOverlayState={this.props.cartOverlayState}/>
+            <CartOverlay cartOverlayState={this.props.cartOverlayState} cartItems={this.props.cartItems}/>
           </span>
         </div>
       </div>

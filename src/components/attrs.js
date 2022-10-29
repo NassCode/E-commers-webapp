@@ -2,14 +2,20 @@ import React, { Component } from "react";
 
 class Attrs extends Component {
   state = {
-    selectedAttrs: [],
+    selectedAttrs: {id: this.props.attrs.id,
+                    quantity: 1,
+                    attributes: []},
   };
 
   
 
   setAttrs = (id, name, value) => {
+    let preSelectedAttrs = [...this.props.initialSelection.attributes];
+    // console.log(preSelectedAttrs);
     // replace the value of the item in the state if it already exists
-    let selectedAttrs = this.state.selectedAttrs;
+    // let selectedAttrs = this.state.selectedAttrs;
+    let selectedAttrs = preSelectedAttrs;
+
     let itemExists = false;
     selectedAttrs.forEach((item, i) => {
       if (item.name === name) {
@@ -25,6 +31,7 @@ class Attrs extends Component {
   };
 
   render() {
+    // console.log(this.props);
     console.log(this.state);
     return (
       <div className="Attrs">

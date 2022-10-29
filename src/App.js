@@ -66,6 +66,7 @@ class App extends Component {
             currentTab={this.state.currentTab}
             toggleCartOverlay={this.toggleCartOverlay}
             cartOverlayState={this.state.cartOverlay}
+            cartItems={this.state.cart}
           />
         </div>
         <div>
