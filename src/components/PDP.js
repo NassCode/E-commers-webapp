@@ -24,7 +24,7 @@ class PDP extends Component {
   }
 
   render() {
-    console.log(this.state.initialSelection);
+    // console.log(this.state.initialSelection);
     // console.log(this.props.pdpItem);
     return (
       <div>

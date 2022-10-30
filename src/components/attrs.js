@@ -2,10 +2,11 @@ import React, { Component } from "react";
 
 class Attrs extends Component {
   state = {
-    selectedAttrs: {id: this.props.attrs.id,
-                    quantity: 1,
-                    attributes: []},
+    id: this.props.attrs.id,
+    quantity: 1,
+    attributes: []
   };
+  
 
   
 
@@ -27,7 +28,7 @@ class Attrs extends Component {
     if (!itemExists) {
       selectedAttrs.push({ id: id, name: name, value: value });
     }
-    this.setState({ selectedAttrs: selectedAttrs });
+    this.setState({ attributes: selectedAttrs });
   };
 
   render() {
@@ -72,7 +73,7 @@ class Attrs extends Component {
             </div>
             <div>
               <button
-                onClick={() => this.props.addToCart(this.state.selectedAttrs.length === 0 ? this.props.initialSelection : this.state.selectedAttrs)}
+                onClick={() => this.props.addToCart(this.state.attributes.length === 0 ? this.props.initialSelection : this.state)}
               >
                 add to cart
               </button>
