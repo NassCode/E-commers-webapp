@@ -9,11 +9,18 @@ class CartOverlay extends Component {
         <img src={cartOutline} />
         {this.props.cartOverlayState === false ? null : (
           <div className="cartOverLay">
-            <h2></h2>
-            <ul>
-              <li>Item 1</li>
-              <li>Item 2</li>
-            </ul>
+           {this.props.cartItems.length === 0 ?
+            <h2>cart is empty</h2> :
+            <div>
+              {this.props.cartItems.map((item, i) => (
+                <div className="cartItem" key={i}>
+                  <div className="cartItemInfo">
+                    <span>{item.id}</span>
+                    <span>{item.quantity}</span>
+                  </div>
+                </div>
+              ))}
+            </div>}
           </div>
         )}
       </div>
