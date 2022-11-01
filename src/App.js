@@ -49,6 +49,7 @@ class App extends Component {
   };
 
   addToCart = (item) => {
+    // increment quantity if item already in cart
     this.setState({ cart: [...this.state.cart, item] });
   };
 
