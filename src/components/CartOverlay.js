@@ -1,9 +1,10 @@
 import React, { Component } from "react";
 import cartOutline from "./icons/cart-outline.svg";
+import CartItem from "./cartItem";
 
 class CartOverlay extends Component {
   render() {
-    console.log(this.props.cartItems);
+    // console.log(this.props.cartItems);
     return (
       <div>
         <img src={cartOutline} />
@@ -15,8 +16,7 @@ class CartOverlay extends Component {
               {this.props.cartItems.map((item, i) => (
                 <div className="cartItem" key={i}>
                   <div className="cartItemInfo">
-                    <span>{item.id}</span>
-                    <span>{item.quantity}</span>
+                    <CartItem item={item} />
                   </div>
                 </div>
               ))}
