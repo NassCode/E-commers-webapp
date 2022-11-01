@@ -2,7 +2,7 @@ import React, { Component } from "react";
 
 class Attrs extends Component {
   state = {
-    id: this.props.attrs.id,
+    itemInfo: this.props.attrs,
     quantity: 1,
     attributes: []
   };

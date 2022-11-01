@@ -10,7 +10,7 @@ class PDP extends Component {
 
   componentDidMount() {
     // update state with default values
-    let initSelect = {id: this.props.pdpItem.id,
+    let initSelect = {itemInfo: this.props.pdpItem,
                        quantity: 1,
                        attributes: []};
 
@@ -25,7 +25,7 @@ class PDP extends Component {
 
   render() {
     // console.log(this.state.initialSelection);
-    console.log(this.props.pdpItem);
+    // console.log(this.props.pdpItem);
     return (
       <div>
         <div>
