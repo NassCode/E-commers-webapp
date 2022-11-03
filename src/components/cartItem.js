@@ -2,7 +2,7 @@ import { Component } from "react";
 
 class CartItem extends Component {
   render() {
-    console.log(this.props.item);
+    // console.log(this.props.item);
     return (
       <div className="cartItem">
         <div className="cartItemInfo">

@@ -4,7 +4,7 @@ import CartItem from "./cartItem";
 
 class CartOverlay extends Component {
   render() {
-    console.log(this.props.cartItems);
+    // console.log(this.props.cartItems);
     return (
       <div>
         <img src={cartOutline} />

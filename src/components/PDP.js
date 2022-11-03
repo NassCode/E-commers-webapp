@@ -23,6 +23,8 @@ class PDP extends Component {
     this.setState({ initialSelection: initSelect });
   }
 
+
+
   render() {
     // console.log(this.state.initialSelection);
     // console.log(this.props.pdpItem);

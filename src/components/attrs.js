@@ -6,6 +6,8 @@ class Attrs extends Component {
     quantity: 1,
     attributes: []
   };
+
+  
   
 
   
