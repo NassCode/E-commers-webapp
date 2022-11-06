@@ -55,7 +55,7 @@ class PDP extends Component {
         value: attr.items[0].value,
       });
     });
-    console.log('rendered');
+    // console.log('rendered');
     this.setState({ initialSelection: initSelect });
 
     
@@ -75,14 +75,14 @@ class PDP extends Component {
         value: attr.items[0].value,
       });
     });
-    console.log('rendered');
+    // console.log('rendered');
     this.setState({ initialSelection: initSelect });
   }
 
  
 
   render() {
-    console.log(this.state);
+    // console.log(this.state);
     // console.log(this.props.pdpItem);
     return (
       <div>

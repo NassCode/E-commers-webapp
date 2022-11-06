@@ -48,25 +48,68 @@ class App extends Component {
   };
 
   addToCart = (item) => {
+     // check if item is already in cart
+     let itemInCart = this.state.cart.find((cartItem) => {
+      return cartItem.itemInfo.id === item.itemInfo.id;
+    });
+     // add item to cart if it is not already in cart
+     if (itemInCart === undefined) {
+      console.log("item not in cart");
+      this.setState({ cart: [...this.state.cart, item] });
+    }
+     else {
+      let valsOfItem = [];
+      let valsOfItemInCart = [];
+
+      item.attributes.forEach((attr) => {
+        valsOfItem.push(attr.value);
+      });
+
+      itemInCart.attributes.forEach((attr) => {
+        valsOfItemInCart.push(attr.value);
+      });
+
+      // find item in cart with same attributes
+      let itemWithSameAttributes = this.state.cart.find((cartItem) => {
+        return cartItem.itemInfo.id === item.itemInfo.id && valsOfItemInCart.every((val) => valsOfItem.includes(val));
+      })
+     
+      if (itemWithSameAttributes === undefined) {
+        console.log("item with same attributes not found");
+        this.setState({ cart: [...this.state.cart, item] });
+       
+      } else {
+        console.log("item with same attributes found");
+        console.log(itemWithSameAttributes);
+        let newCart = [...this.state.cart];
+        let index = newCart.indexOf(itemWithSameAttributes);
+        newCart[index].quantity++;
+        this.setState({ cart: newCart });
+
+        // let newCart = this.state.cart.map((cartItem) => {
+        //   if (cartItem.itemInfo.id === item.itemInfo.id && valsOfItemInCart.every((val) => valsOfItem.includes(val))) {
+        //     cartItem.quantity += 1;
+        //   }
+        //   return cartItem;
+        // });
+
+        // this.setState({ cart: newCart });      }
+      }
+
+    }
+
+    
     // let cart = this.state.cart;
     // cart.push(item);
     // this.setState({ cart: cart });
-    this.setState({ cart: [...this.state.cart, item] });
+    // this.setState({ cart: [...this.state.cart, item] });
   };
 
   toggleCartOverlay = () => {
     this.setState({ cartOverlay: !this.state.cartOverlay });
   };
 
-  componentDidUpdate(p1, p2) {
-    //rerender when cart changes
-    if (p2.cart !== this.state.cart) {
-      console.log("cart changed");
-      console.log(p1.cart)
-      console.log(p2.cart)
-    }
-  }
-
+  
 
   render() {
     // console.log(this.state.cart);
