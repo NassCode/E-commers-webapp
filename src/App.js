@@ -48,34 +48,28 @@ class App extends Component {
   };
 
   addToCart = (item) => {
-    console.log(item);
-    // check if item is already in cart
-    let itemInCart = this.state.cart.find((cartItem) => {
-      return cartItem.itemInfo.id === item.itemInfo.id;
-    });
-
-    // add item to cart if it is not already in cart
-    if (itemInCart === undefined) {
-      this.setState({ cart: [...this.state.cart, item] });
-    } else {
-      //if item is already in cart, increment quantity
-      let newCart = this.state.cart.map((cartItem) => {
-        if (cartItem.itemInfo.id === item.itemInfo.id) {
-          cartItem.attributes = item.attributes;
-        }
-        return cartItem;
-      });
-
-      this.setState({ cart: newCart });
-    }
+    // let cart = this.state.cart;
+    // cart.push(item);
+    // this.setState({ cart: cart });
+    this.setState({ cart: [...this.state.cart, item] });
   };
 
   toggleCartOverlay = () => {
     this.setState({ cartOverlay: !this.state.cartOverlay });
   };
 
+  componentDidUpdate(p1, p2) {
+    //rerender when cart changes
+    if (p2.cart !== this.state.cart) {
+      console.log("cart changed");
+      console.log(p1.cart)
+      console.log(p2.cart)
+    }
+  }
+
+
   render() {
-    console.log(this.state.cart);
+    // console.log(this.state.cart);
     return (
       <div>
         <div>
@@ -111,6 +105,7 @@ class App extends Component {
               pdpItem={this.state.pdpItem}
               changeLocation={this.changeLocation}
               addToCart={this.addToCart}
+              cart={this.state.cart}
             />
           ) : null}
         </div>

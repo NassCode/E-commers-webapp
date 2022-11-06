@@ -12,26 +12,32 @@ class Attrs extends Component {
 
   
 
-  setAttrs = (id, name, value) => {
-    let preSelectedAttrs = [...this.props.initialSelection.attributes];
-    // console.log(preSelectedAttrs);
-    // replace the value of the item in the state if it already exists
-    // let selectedAttrs = this.state.selectedAttrs;
-    let selectedAttrs = preSelectedAttrs;
+  // setAttrs = (id, name, value) => {
+  //   let preSelectedAttrs = [...this.props.initialSelection.attributes];
+  //   // console.log(preSelectedAttrs);
+  //   // replace the value of the item in the state if it already exists
+  //   // let selectedAttrs = this.state.selectedAttrs;
+  //   let selectedAttrs = preSelectedAttrs;
 
-    let itemExists = false;
-    selectedAttrs.forEach((item, i) => {
-      if (item.name === name) {
-        selectedAttrs[i].value = value;
-        itemExists = true;
-      }
-    });
-    // if the item doesn't exist, add it to the state
-    if (!itemExists) {
-      selectedAttrs.push({ id: id, name: name, value: value });
-    }
-    this.setState({ attributes: selectedAttrs });
-  };
+  //   let itemExists = false;
+  //   selectedAttrs.forEach((item, i) => {
+  //     if (item.name === name) {
+  //       selectedAttrs[i].value = value;
+  //       itemExists = true;
+  //     }
+  //   });
+  //   // if the item doesn't exist, add it to the state
+  //   if (!itemExists) {
+  //     selectedAttrs.push({ id: id, name: name, value: value });
+  //   }
+  //   this.setState({ attributes: selectedAttrs });
+  // };
+
+  // handleSubmit = (e) => {
+  //   console.log(this.state);
+  //   this.props.addToCart(this.state.attributes.length === 0 ? this.props.initialSelection : this.state);
+  //   this.props.handleChangeSubmit();
+  // }
 
   render() {
     // console.log(this.props);
@@ -52,7 +58,7 @@ class Attrs extends Component {
                     <div key={item.id}>
                       <h1
                         onClick={() =>
-                          this.setAttrs(
+                          this.props.setSelection(
                             this.props.attrs.id,
                             attr.name,
                             item.value
@@ -74,11 +80,13 @@ class Attrs extends Component {
               </h1>
             </div>
             <div>
-              <button
-                onClick={() => this.props.addToCart(this.state.attributes.length === 0 ? this.props.initialSelection : this.state)}
+              {/* <button
+                onClick={() => this.handleSubmit()}
+                        
+              
               >
                 add to cart
-              </button>
+              </button> */}
             </div>
             <div
               dangerouslySetInnerHTML={{ __html: this.props.attrs.description }}
