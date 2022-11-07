@@ -48,71 +48,48 @@ class App extends Component {
   };
 
   addToCart = (item) => {
-     // check if item is already in cart
-     let itemInCart = this.state.cart.find((cartItem) => {
+    // check if item is already in cart
+    let itemInCart = this.state.cart.find((cartItem) => {
       return cartItem.itemInfo.id === item.itemInfo.id;
     });
-     // add item to cart if it is not already in cart
-     if (itemInCart === undefined) {
+    // add item to cart if it is not already in cart
+    if (itemInCart === undefined) {
       console.log("item not in cart");
       this.setState({ cart: [...this.state.cart, item] });
-    }
-     else {
-      let valsOfItem = [];
-      let valsOfItemInCart = [];
-
-      item.attributes.forEach((attr) => {
-        valsOfItem.push(attr.value);
+    } else {
+      let newItemInCart = this.state.cart.find((cartItem) => {
+        return (
+          cartItem.itemInfo.id === item.itemInfo.id &&
+          cartItem.attributes.every((attr) => {
+            return item.attributes.some((attr2) => {
+              return attr.name === attr2.name && attr.value === attr2.value;
+            });
+          })
+        );
       });
+      console.log(newItemInCart);
 
-      itemInCart.attributes.forEach((attr) => {
-        valsOfItemInCart.push(attr.value);
-      });
-
-      // find item in cart with same attributes
-      let itemWithSameAttributes = this.state.cart.find((cartItem) => {
-        return cartItem.itemInfo.id === item.itemInfo.id && valsOfItemInCart.every((val) => valsOfItem.includes(val));
-      })
-     
-      if (itemWithSameAttributes === undefined) {
+      if (newItemInCart === undefined) {
         console.log("item with same attributes not found");
+        console.log(item);
         this.setState({ cart: [...this.state.cart, item] });
-       
       } else {
         console.log("item with same attributes found");
-        console.log(itemWithSameAttributes);
+        console.log(newItemInCart);
         let newCart = [...this.state.cart];
-        let index = newCart.indexOf(itemWithSameAttributes);
+        let index = newCart.indexOf(newItemInCart);
         newCart[index].quantity++;
         this.setState({ cart: newCart });
-
-        // let newCart = this.state.cart.map((cartItem) => {
-        //   if (cartItem.itemInfo.id === item.itemInfo.id && valsOfItemInCart.every((val) => valsOfItem.includes(val))) {
-        //     cartItem.quantity += 1;
-        //   }
-        //   return cartItem;
-        // });
-
-        // this.setState({ cart: newCart });      }
       }
-
     }
-
-    
-    // let cart = this.state.cart;
-    // cart.push(item);
-    // this.setState({ cart: cart });
-    // this.setState({ cart: [...this.state.cart, item] });
   };
 
   toggleCartOverlay = () => {
     this.setState({ cartOverlay: !this.state.cartOverlay });
   };
 
-  
-
   render() {
-    // console.log(this.state.cart);
+    console.log(this.state.cart);
     return (
       <div>
         <div>
