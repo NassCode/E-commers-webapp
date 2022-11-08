@@ -16,7 +16,7 @@ class App extends Component {
     currency: "USD",
     pdpItem: {},
     cart: [],
-    cartOverlay: false,
+    cartOverlay: 'false',
   };
 
   componentDidMount() {

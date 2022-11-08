@@ -3,6 +3,7 @@ import CartOverlay from "./CartOverlay";
 
 class Navbar extends Component {
   render() {
+    console.log(this.props.cartOverlayState);
     return (
       <div className="navbar container">
         <div className="categoriesContainer">
@@ -17,11 +18,12 @@ class Navbar extends Component {
 
         <div className="cartContainer">
           <span>$</span>
-          <span onClick={() => this.props.toggleCartOverlay()}>
+          <span>
             <CartOverlay 
             cartOverlayState={this.props.cartOverlayState} cartItems={this.props.cartItems}
             incrementQuantity={this.props.incrementQuantity}
             decrementQuantity={this.props.decrementQuantity}
+            toggleCartOverlay={this.props.toggleCartOverlay}
             />
           </span>
         </div>

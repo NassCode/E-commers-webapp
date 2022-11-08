@@ -17,11 +17,12 @@ class CartOverlay extends Component {
       totalPrice += item.itemInfo.prices[0].amount * item.quantity;
     });
 
+  
     
     
     return (
       <div>
-        <img src={cartOutline} />
+        <img onClick={() => this.props.toggleCartOverlay()} src={cartOutline} />
         {this.props.cartOverlayState === false ? null : (
           <div className="cartOverLay">
            {this.props.cartItems.length === 0 ?
