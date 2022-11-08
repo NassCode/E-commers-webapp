@@ -56,6 +56,7 @@ class App extends Component {
     if (itemInCart === undefined) {
       this.setState({ cart: [...this.state.cart, item] });
     } else {
+      // check if item with same attributes is already in cart
       let newItemInCart = this.state.cart.find((cartItem) => {
         return (
           cartItem.itemInfo.id === item.itemInfo.id &&
@@ -81,6 +82,27 @@ class App extends Component {
     }
   };
 
+  // increment quantity of item in cart
+  incrementQuantity = (item) => {
+    let newCart = [...this.state.cart];
+    let index = newCart.indexOf(item);
+    newCart[index].quantity++;
+    this.setState({ cart: newCart });
+  };
+
+  // decrement quantity of item in cart
+  decrementQuantity = (item) => {
+    let newCart = [...this.state.cart];
+    let index = newCart.indexOf(item);
+    if (newCart[index].quantity > 1) {
+      newCart[index].quantity--;
+      this.setState({ cart: newCart });
+    } else {
+      newCart.splice(index, 1);
+      this.setState({ cart: newCart });
+    }
+  };
+
   toggleCartOverlay = () => {
     this.setState({ cartOverlay: !this.state.cartOverlay });
   };
@@ -96,6 +118,8 @@ class App extends Component {
             toggleCartOverlay={this.toggleCartOverlay}
             cartOverlayState={this.state.cartOverlay}
             cartItems={this.state.cart}
+            incrementQuantity={this.incrementQuantity}
+            decrementQuantity={this.decrementQuantity}
           />
         </div>
         <div>

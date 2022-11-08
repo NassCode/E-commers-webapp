@@ -2,15 +2,15 @@ import { Component } from "react";
 
 class CartItem extends Component {
   render() {
-    console.log(this.props.item);
+    // console.log(this.props.item);
     return (
       <div className="cartItem">
         <div className="cartItemInfo">
           <h3>{this.props.item.itemInfo.brand}</h3>
           <h3>{this.props.item.itemInfo.name}</h3>
           <h3>{this.props.item.quantity} <span>
-            <button>+</button>
-            <button>-</button>
+            <button onClick={() => this.props.incrementQuantity(this.props.item)}>+</button>
+            <button onClick={() => this.props.decrementQuantity(this.props.item)}>-</button>
             </span></h3>
           <h3>{this.props.item.itemInfo.prices[0].amount}{" "}{this.props.item.itemInfo.prices[0].currency.symbol}</h3>
           <span>{this.props.item.attributes.map((attr, i) =>

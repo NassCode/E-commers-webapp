@@ -33,7 +33,11 @@ class CartOverlay extends Component {
               {this.props.cartItems.map((item, i) => (
                 <div className="cartItem" key={i}>
                   <div className="cartItemInfo">
-                    <CartItem item={item} />
+                    <CartItem 
+                    item={item}
+                    incrementQuantity={this.props.incrementQuantity}
+                    decrementQuantity={this.props.decrementQuantity}
+                     />
                   </div>
                 </div>
               ))}
