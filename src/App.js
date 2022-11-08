@@ -54,7 +54,6 @@ class App extends Component {
     });
     // add item to cart if it is not already in cart
     if (itemInCart === undefined) {
-      console.log("item not in cart");
       this.setState({ cart: [...this.state.cart, item] });
     } else {
       let newItemInCart = this.state.cart.find((cartItem) => {
@@ -70,11 +69,9 @@ class App extends Component {
       console.log(newItemInCart);
 
       if (newItemInCart === undefined) {
-        console.log("item with same attributes not found");
         console.log(item);
         this.setState({ cart: [...this.state.cart, item] });
       } else {
-        console.log("item with same attributes found");
         console.log(newItemInCart);
         let newCart = [...this.state.cart];
         let index = newCart.indexOf(newItemInCart);
@@ -89,7 +86,7 @@ class App extends Component {
   };
 
   render() {
-    console.log(this.state.cart);
+    // console.log(this.state.cart);
     return (
       <div>
         <div>

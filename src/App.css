@@ -131,7 +131,7 @@ body {
 .cartOverLay {
   position: absolute;
   /* top: 10%; */
-  left: 92%;
+  left: 80%;
   width: auto;
   height: auto;
   /* float: right; */
@@ -139,7 +139,14 @@ body {
 
   background-color: rgba(0, 0, 0, 0.5);
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   /* z-index: 100; */
+}
+
+.miniCartImg {
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
 }
