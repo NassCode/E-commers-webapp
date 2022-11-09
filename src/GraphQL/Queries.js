@@ -32,5 +32,18 @@ query {
     brand
     }
   }
+  currencies {
+    label
+    symbol
+  }
+}
+`;
+
+export const CURRENCIES = gql`
+query {
+  currencies {
+    label
+    symbol
+  }
 }
 `;

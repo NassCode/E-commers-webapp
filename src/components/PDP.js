@@ -101,8 +101,9 @@ class PDP extends Component {
               isSubmitted={this.state.submitted}
               handleChangeSubmit={this.handleChangeSubmit}
               setSelection={this.setSelection}
+              handleSubmit={this.handleSubmit}
             />
-            <button onClick={() => this.handleSubmit()}>Add To Cart</button>
+            {/* <button onClick={() => this.handleSubmit()}>Add To Cart</button> */}
           </div>
         </div>
       </div>

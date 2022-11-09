@@ -7,16 +7,19 @@ import Navbar from "./components/navbar";
 import { client } from "./index";
 import { CATEGORIES } from "./GraphQL/Queries";
 import PDP from "./components/PDP";
+import { CurrencyProvider } from "./currencyContext";
 
 class App extends Component {
   state = {
     categories: [],
+    currencies: [],
     currentTab: "All",
     location: "PLP",
-    currency: "USD",
+    currency: {},
     pdpItem: {},
     cart: [],
     cartOverlay: false,
+    currencyMenu: false,
   };
 
   componentDidMount() {
@@ -27,6 +30,8 @@ class App extends Component {
       .then((result) => {
         this.setState({
           categories: result.data.categories,
+          currencies: result.data.currencies,
+          currency: result.data.currencies[0],
         });
       });
   }
@@ -107,50 +112,64 @@ class App extends Component {
     this.setState({ cartOverlay: !this.state.cartOverlay });
   };
 
-  render() {
-    // console.log(this.state.cart);
-    return (
-      <div>
-        <div>
-          <Navbar
-            tabChange={this.tabChange}
-            currentTab={this.state.currentTab}
-            toggleCartOverlay={this.toggleCartOverlay}
-            cartOverlayState={this.state.cartOverlay}
-            cartItems={this.state.cart}
-            incrementQuantity={this.incrementQuantity}
-            decrementQuantity={this.decrementQuantity}
-          />
-        </div>
-        <div>
-          {
-            this.state.categories.length === 0 && <div>Loading...</div>
-            // implement loading screen
-            // implement what component to render based on state
-          }
-        </div>
-        <div>
-          {this.state.location === "PLP" &&
-          this.state.categories.length !== 0 ? (
-            <PLP
-              categories={this.state.categories}
-              currentTab={this.state.currentTab}
-              changeLocation={this.changeLocation}
-              selectPDPItem={this.selectPDPItem}
-            />
-          ) : null}
+  toggleCurrencyMenu = () => {
+    this.setState({ currencyMenu: !this.state.currencyMenu });
+  };
 
-          {this.state.location === "PDP" &&
-          this.state.categories.length !== 0 ? (
-            <PDP
-              pdpItem={this.state.pdpItem}
-              changeLocation={this.changeLocation}
-              addToCart={this.addToCart}
-              cart={this.state.cart}
+  selectCurrency = (currency) => {
+    this.setState({ currency: currency });
+  }
+
+  render() {
+    console.log(this.state.currency);
+    return (
+      <CurrencyProvider value={this.state.currency}>
+        <div>
+          <div>
+            <Navbar
+              tabChange={this.tabChange}
+              currentTab={this.state.currentTab}
+              toggleCartOverlay={this.toggleCartOverlay}
+              cartOverlayState={this.state.cartOverlay}
+              cartItems={this.state.cart}
+              incrementQuantity={this.incrementQuantity}
+              decrementQuantity={this.decrementQuantity}
+              toggleCurrencyMenu={this.toggleCurrencyMenu}
+              currencyMenuState={this.state.currencyMenu}
+              currencies={this.state.currencies}
+              selectCurrency={this.selectCurrency}
             />
-          ) : null}
+          </div>
+          <div>
+            {
+              this.state.categories.length === 0 && <div>Loading...</div>
+              // implement loading screen
+              // implement what component to render based on state
+            }
+          </div>
+          <div>
+            {this.state.location === "PLP" &&
+            this.state.categories.length !== 0 ? (
+              <PLP
+                categories={this.state.categories}
+                currentTab={this.state.currentTab}
+                changeLocation={this.changeLocation}
+                selectPDPItem={this.selectPDPItem}
+              />
+            ) : null}
+
+            {this.state.location === "PDP" &&
+            this.state.categories.length !== 0 ? (
+              <PDP
+                pdpItem={this.state.pdpItem}
+                changeLocation={this.changeLocation}
+                addToCart={this.addToCart}
+                cart={this.state.cart}
+              />
+            ) : null}
+          </div>
         </div>
-      </div>
+      </CurrencyProvider>
     );
   }
 }

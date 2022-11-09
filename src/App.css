@@ -145,6 +145,10 @@ body {
   /* z-index: 100; */
 }
 
+.currencyMenu {
+  position: absolute;
+}
+
 .miniCartImg {
   width: 100px;
   height: 100px;

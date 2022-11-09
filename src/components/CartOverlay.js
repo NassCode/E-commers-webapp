@@ -1,8 +1,10 @@
 import React, { Component } from "react";
 import cartOutline from "./icons/cart-outline.svg";
 import CartItem from "./cartItem";
+import CurrencyContext from "../currencyContext";
 
 class CartOverlay extends Component {
+  static contextType = CurrencyContext;
 
   render() {
     // sum up total of cart items quantity
@@ -16,6 +18,8 @@ class CartOverlay extends Component {
     this.props.cartItems.forEach((item) => {
       totalPrice += item.itemInfo.prices[0].amount * item.quantity;
     });
+
+    console.log(this.context);
 
   
     

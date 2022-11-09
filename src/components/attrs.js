@@ -80,13 +80,13 @@ class Attrs extends Component {
               </h1>
             </div>
             <div>
-              {/* <button
-                onClick={() => this.handleSubmit()}
+              <button
+                onClick={() => this.props.handleSubmit()}
                         
               
               >
                 add to cart
-              </button> */}
+              </button>
             </div>
             <div
               dangerouslySetInnerHTML={{ __html: this.props.attrs.description }}
