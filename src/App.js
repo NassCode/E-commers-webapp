@@ -155,6 +155,7 @@ class App extends Component {
                 currentTab={this.state.currentTab}
                 changeLocation={this.changeLocation}
                 selectPDPItem={this.selectPDPItem}
+                currency={this.state.currency}
               />
             ) : null}
 

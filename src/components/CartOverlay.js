@@ -19,7 +19,7 @@ class CartOverlay extends Component {
       totalPrice += item.itemInfo.prices[0].amount * item.quantity;
     });
 
-    console.log(this.context);
+    // console.log(this.context);
 
   
     

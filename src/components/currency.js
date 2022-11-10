@@ -7,7 +7,7 @@ class CurrencyMenu extends React.Component {
   
 
   render() {
-    console.log(this.props.currencies);
+    // console.log(this.props.currencies);
     return (
       <div className="currencyMenu">
         <h3 onClick={() => this.props.toggleCurrencyMenu()}>$</h3>

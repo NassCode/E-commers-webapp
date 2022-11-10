@@ -18,6 +18,7 @@ export default class PLP extends Component {
                 key={i}
                 productProps={product}
                 selectPDPItem={this.props.selectPDPItem}
+                currency={this.props.currency}
               />
             ))}
           </div>
@@ -30,6 +31,8 @@ export default class PLP extends Component {
                 key={i}
                 productProps={product}
                 selectPDPItem={this.props.selectPDPItem}
+                currency={this.props.currency}
+
               />
             ))}
           </div>
@@ -42,6 +45,8 @@ export default class PLP extends Component {
                 key={i}
                 productProps={product}
                 selectPDPItem={this.props.selectPDPItem}
+                currency={this.props.currency}
+
               />
             ))}
           </div>
