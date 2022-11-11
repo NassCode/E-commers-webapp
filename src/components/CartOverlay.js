@@ -29,9 +29,10 @@ class CartOverlay extends Component {
 
     // sum up total of cart items price
     let totalPrice = 0;
-    // let currencyIndex = this.findCurrencyIndex(this.props.cartItems[0])
+    let currencyIndex = this.props.cartItems.length > 0 ? this.findCurrencyIndex(this.props.cartItems[0].itemInfo) : 0
+
     this.props.cartItems.forEach((item) => {
-      totalPrice += item.itemInfo.prices[0].amount * item.quantity;
+      totalPrice += item.itemInfo.prices[currencyIndex].amount * item.quantity;
     });
 
     // console.log(this.context);
@@ -69,7 +70,7 @@ class CartOverlay extends Component {
 
             </div>
             <div>
-              <h4>Totall: {parseFloat(totalPrice.toFixed(2)) } $</h4>
+              <h4>Totall: {parseFloat(totalPrice.toFixed(2)) } {this.props.currency.symbol}</h4>
             </div>
           </div>
         )}
