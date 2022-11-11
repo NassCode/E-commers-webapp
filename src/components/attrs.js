@@ -39,8 +39,24 @@ class Attrs extends Component {
   //   this.props.handleChangeSubmit();
   // }
 
+  findCurrency = (item) => {
+    let currency = this.props.currency;
+    let currencySymbol = "";
+    let itemPrice = 0;
+    item.prices.forEach((price) => {
+      if (price.currency.symbol === currency.symbol) {
+        currencySymbol = price.currency.symbol;
+        itemPrice = price.amount;
+      }
+    });
+    return { currencySymbol, itemPrice };
+  };
+
   render() {
     // console.log(this.props);
+    let { currencySymbol, itemPrice } = this.findCurrency(
+      this.props.attrs
+    );
     // console.log(this.state);
     return (
       <div className="Attrs">
@@ -75,8 +91,8 @@ class Attrs extends Component {
             <div>
               <h1>{this.props.attrs.prices[0].__typename}:</h1>
               <h1>
-                {this.props.attrs.prices[0].currency.symbol}{" "}
-                {this.props.attrs.prices[0].amount}
+                {currencySymbol}{" "}
+                {itemPrice}
               </h1>
             </div>
             <div>

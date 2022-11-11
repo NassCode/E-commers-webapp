@@ -1,8 +1,26 @@
 import { Component } from "react";
 
 class CartItem extends Component {
+  findCurrency = (item) => {
+    let currency = this.props.currency;
+    let currencySymbol = "";
+    let itemPrice = 0;
+    item.itemInfo.prices.forEach((price) => {
+      if (price.currency.symbol === currency.symbol) {
+        currencySymbol = price.currency.symbol;
+        itemPrice = price.amount;
+      }
+    });
+    return { currencySymbol, itemPrice };
+  };
+
+
   render() {
-    // console.log(this.props.item);
+    // console.log(this.props);
+    let { currencySymbol, itemPrice } = this.findCurrency(
+      this.props.item
+    );
+
     return (
       <div className="cartItem">
         <div className="cartItemInfo">
@@ -12,7 +30,7 @@ class CartItem extends Component {
             <button onClick={() => this.props.incrementQuantity(this.props.item)}>+</button>
             <button onClick={() => this.props.decrementQuantity(this.props.item)}>-</button>
             </span></h3>
-          <h3>{this.props.item.itemInfo.prices[0].amount}{" "}{this.props.item.itemInfo.prices[0].currency.symbol}</h3>
+          <h3>{itemPrice * this.props.item.quantity}{" "}{currencySymbol}</h3>
           <span>{this.props.item.attributes.map((attr, i) =>
             <div key={i}>
               <span>{attr.name}: {attr.value}</span>

@@ -79,6 +79,8 @@ class PDP extends Component {
     this.setState({ initialSelection: initSelect });
   }
 
+  
+
  
 
   render() {
@@ -102,6 +104,7 @@ class PDP extends Component {
               handleChangeSubmit={this.handleChangeSubmit}
               setSelection={this.setSelection}
               handleSubmit={this.handleSubmit}
+              currency={this.props.currency}
             />
             {/* <button onClick={() => this.handleSubmit()}>Add To Cart</button> */}
           </div>

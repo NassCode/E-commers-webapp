@@ -17,7 +17,6 @@ class Item extends Component {
   };
 
   render() {
-    console.log(this.findCurrency(this.props.productProps));
     let { currencySymbol, itemPrice } = this.findCurrency(
       this.props.productProps
     );

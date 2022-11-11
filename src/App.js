@@ -121,7 +121,7 @@ class App extends Component {
   }
 
   render() {
-    console.log(this.state.currency);
+    // console.log(this.state.currency);
     return (
       <CurrencyProvider value={this.state.currency}>
         <div>
@@ -138,6 +138,8 @@ class App extends Component {
               currencyMenuState={this.state.currencyMenu}
               currencies={this.state.currencies}
               selectCurrency={this.selectCurrency}
+              currency={this.state.currency}
+
             />
           </div>
           <div>
@@ -166,6 +168,7 @@ class App extends Component {
                 changeLocation={this.changeLocation}
                 addToCart={this.addToCart}
                 cart={this.state.cart}
+                currency={this.state.currency}
               />
             ) : null}
           </div>
