@@ -4,8 +4,23 @@ import CartItem from "./cartItem";
 import CurrencyContext from "../currencyContext";
 
 class CartOverlay extends Component {
-  static contextType = CurrencyContext;
-  // find the index of the current currrency in the item prices array
+  constructor(props) {
+    super(props);
+    this.ref = React.createRef();
+    this.handleClickOutside = this.handleClickOutside.bind(this);
+  }
+
+  componentDidMount() {
+    document.addEventListener("click", this.handleClickOutside, true);
+  }
+
+  handleClickOutside(event) {
+    if (this.ref.current && !this.ref.current.contains(event.target)) {
+      this.props.toggleCartOverlay();
+    }
+  }
+
+
   findCurrencyIndex = (item) => {
     let currency = this.props.currency
     let currencyIndex = 0
@@ -19,7 +34,7 @@ class CartOverlay extends Component {
 
 
   render() {
-    console.log(this.props);
+    // console.log(this.props);
     // sum up total of cart items quantity
     let total = 0;
     this.props.cartItems.forEach((item) => {
@@ -44,7 +59,7 @@ class CartOverlay extends Component {
       <div>
         <img onClick={() => this.props.toggleCartOverlay()} src={cartOutline} />
         {this.props.cartOverlayState === false ? null : (
-          <div className="cartOverLay">
+          <div ref={this.ref} className="cartOverLay">
            {this.props.cartItems.length === 0 ?
             <h2>cart is empty</h2> :
             <div>

@@ -21,6 +21,7 @@ class App extends Component {
     cartOverlay: false,
     currencyMenu: false,
   };
+  
 
   componentDidMount() {
     client

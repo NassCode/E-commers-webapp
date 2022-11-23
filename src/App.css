@@ -147,6 +147,7 @@ body {
 
 .currencyMenu {
   position: absolute;
+  border: 1px solid black;
 }
 
 .miniCartImg {
