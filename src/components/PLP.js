@@ -10,7 +10,7 @@ export default class PLP extends Component {
       (category) => category.name === this.props.currentTab
     );
 
-    console.log(category);
+    // console.log(category);
 
     return (
       <div>

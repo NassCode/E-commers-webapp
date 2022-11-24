@@ -5,12 +5,14 @@ import CurrencyMenu from "./currency";
 class Navbar extends Component {
   render() {
     // console.log(this.props.cartOverlayState);
+    
     return (
       <div className="navbar container">
         <div className="categoriesContainer">
           {this.props.tabs.map((tab, i) => (
-            <h4 key={i} onClick={() => this.props.tabChange(tab)}>
-              {tab}
+            
+            <h4 className={` navbarTab ${tab === this.props.currentTab ? "activeTab" : ""}`} key={i} onClick={() => this.props.tabChange(tab)}>
+              {tab.toUpperCase()}
             </h4>
           ))}
         </div>
