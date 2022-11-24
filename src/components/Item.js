@@ -21,24 +21,35 @@ class Item extends Component {
       this.props.productProps
     );
 
+    console.log(this.props.productProps);
+
     return (
       <div
-        className="PLPitem"
+        className={`PLPitem ${
+          this.props.productProps.inStock ? "" : "outOfStock"
+        }`}
         onClick={() => this.props.selectPDPItem(this.props.productProps, "PDP")}
       >
-        <div className="PLPimageContainer">
-          <img
-            className="PLPimage"
-            src={this.props.productProps.gallery[0]}
-            alt={cartOutline}
-          />
+        <div>
+          <div className="PLPimageContainer">
+            <img
+              className="PLPimage"
+              src={this.props.productProps.gallery[0]}
+              alt={cartOutline}
+            />
+          </div>
+          <div className="PLPitemInfo">
+            <span>{this.props.productProps.name}</span>
+            <span>
+              {itemPrice} {currencySymbol}
+            </span>
+          </div>
         </div>
-        <div className="PLPitemInfo">
-          <span>{this.props.productProps.name}</span>
-          <span>
-            {itemPrice} {currencySymbol}
-          </span>
-        </div>
+        {this.props.productProps.inStock ? null : (
+          <div className="outOfStockOverlay">
+            <h4>OUT OF STOCK</h4>
+          </div>
+        )}
       </div>
     );
   }
