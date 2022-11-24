@@ -6,51 +6,25 @@ export default class PLP extends Component {
     // clean this up
 
     const { categories } = this.props;
+    let category = categories.find(
+      (category) => category.name === this.props.currentTab
+    );
+
+    console.log(category);
 
     return (
       <div>
         <h1>Categories</h1>
-
-        {this.props.currentTab === "All" && (
-          <div className="PLPcontainer">
-            {categories[0].products.map((product, i) => (
-              <Item
-                key={i}
-                productProps={product}
-                selectPDPItem={this.props.selectPDPItem}
-                currency={this.props.currency}
-              />
-            ))}
-          </div>
-        )}
-
-        {this.props.currentTab === "Clothes" && (
-          <div className="PLPcontainer">
-            {categories[1].products.map((product, i) => (
-              <Item
-                key={i}
-                productProps={product}
-                selectPDPItem={this.props.selectPDPItem}
-                currency={this.props.currency}
-
-              />
-            ))}
-          </div>
-        )}
-
-        {this.props.currentTab === "Tech" && (
-          <div className="PLPcontainer">
-            {categories[2].products.map((product, i) => (
-              <Item
-                key={i}
-                productProps={product}
-                selectPDPItem={this.props.selectPDPItem}
-                currency={this.props.currency}
-
-              />
-            ))}
-          </div>
-        )}
+        <div className="PLPcontainer">
+          {category.products.map((product, i) => (
+            <Item
+              key={i}
+              productProps={product}
+              selectPDPItem={this.props.selectPDPItem}
+              currency={this.props.currency}
+            />
+          ))}
+        </div>
       </div>
     );
   }

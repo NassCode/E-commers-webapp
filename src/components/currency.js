@@ -14,7 +14,7 @@ class CurrencyMenu extends React.Component {
   
   // detect click outside of currency menu
   componentDidMount() {
-    document.addEventListener("click", this.handleClickOutside, true);
+    document.addEventListener("mousedown", this.handleClickOutside, true);
   }
 
   handleClickOutside(event) {

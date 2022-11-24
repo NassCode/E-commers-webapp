@@ -12,8 +12,9 @@ import { CurrencyProvider } from "./currencyContext";
 class App extends Component {
   state = {
     categories: [],
+    categoriesList: [],
     currencies: [],
-    currentTab: "All",
+    currentTab: "",
     location: "PLP",
     currency: {},
     pdpItem: {},
@@ -29,10 +30,16 @@ class App extends Component {
         query: CATEGORIES,
       })
       .then((result) => {
+        let categoriesList = result.data.categories.map((category) => {
+          return category.name;
+        });
+
         this.setState({
           categories: result.data.categories,
           currencies: result.data.currencies,
           currency: result.data.currencies[0],
+          categoriesList: categoriesList,
+          currentTab: categoriesList[0],
         });
       });
   }
@@ -122,7 +129,7 @@ class App extends Component {
   }
 
   render() {
-    // console.log(this.state.currency);
+    // console.log(this.state.categoriesList);
     return (
       <CurrencyProvider value={this.state.currency}>
         <div>
@@ -140,6 +147,7 @@ class App extends Component {
               currencies={this.state.currencies}
               selectCurrency={this.selectCurrency}
               currency={this.state.currency}
+              tabs={this.state.categoriesList}
 
             />
           </div>
