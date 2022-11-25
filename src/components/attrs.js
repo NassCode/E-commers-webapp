@@ -4,40 +4,8 @@ class Attrs extends Component {
   state = {
     itemInfo: this.props.attrs,
     quantity: 1,
-    attributes: []
+    attributes: [],
   };
-
-  
-  
-
-  
-
-  // setAttrs = (id, name, value) => {
-  //   let preSelectedAttrs = [...this.props.initialSelection.attributes];
-  //   // console.log(preSelectedAttrs);
-  //   // replace the value of the item in the state if it already exists
-  //   // let selectedAttrs = this.state.selectedAttrs;
-  //   let selectedAttrs = preSelectedAttrs;
-
-  //   let itemExists = false;
-  //   selectedAttrs.forEach((item, i) => {
-  //     if (item.name === name) {
-  //       selectedAttrs[i].value = value;
-  //       itemExists = true;
-  //     }
-  //   });
-  //   // if the item doesn't exist, add it to the state
-  //   if (!itemExists) {
-  //     selectedAttrs.push({ id: id, name: name, value: value });
-  //   }
-  //   this.setState({ attributes: selectedAttrs });
-  // };
-
-  // handleSubmit = (e) => {
-  //   console.log(this.state);
-  //   this.props.addToCart(this.state.attributes.length === 0 ? this.props.initialSelection : this.state);
-  //   this.props.handleChangeSubmit();
-  // }
 
   findCurrency = (item) => {
     let currency = this.props.currency;
@@ -53,26 +21,26 @@ class Attrs extends Component {
   };
 
   render() {
-    // console.log(this.props);
-    let { currencySymbol, itemPrice } = this.findCurrency(
-      this.props.attrs
-    );
+    console.log(this.props.selectedAttrs);
+    console.log(this.props.initialSelection);
+    let { currencySymbol, itemPrice } = this.findCurrency(this.props.attrs);
+    
     // console.log(this.state);
     return (
       <div className="Attrs">
         <div className="Attrs__container">
           <div className="Attrs__container__img">
             <h1>{this.props.attrs.brand}</h1>
-            <h1>{this.props.attrs.name}</h1>
+            <h5>{this.props.attrs.name}</h5>
           </div>
           <div>
             {this.props.attrs.attributes.map((attr, i) => (
               <div key={attr.id}>
-                <h1>{attr.name}:</h1>
+                <h2>{attr.name}:</h2>
                 <div className="itemAtrrs">
                   {attr.items.map((item, i) => (
                     <div key={item.id}>
-                      <h1
+                      <h2 className="attrsRep"
                         onClick={() =>
                           this.props.setSelection(
                             this.props.attrs.id,
@@ -82,25 +50,20 @@ class Attrs extends Component {
                         }
                       >
                         {item.displayValue}
-                      </h1>
+                      </h2>
                     </div>
                   ))}
                 </div>
               </div>
             ))}
             <div>
-              <h1>{this.props.attrs.prices[0].__typename}:</h1>
-              <h1>
-                {currencySymbol}{" "}
-                {itemPrice}
-              </h1>
+              <h3>{this.props.attrs.prices[0].__typename}:</h3>
+              <h2>
+                {currencySymbol} {itemPrice}
+              </h2>
             </div>
             <div>
-              <button
-                onClick={() => this.props.handleSubmit()}
-                        
-              
-              >
+              <button onClick={() => this.props.handleSubmit()}>
                 add to cart
               </button>
             </div>

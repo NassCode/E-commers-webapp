@@ -100,6 +100,7 @@ class PDP extends Component {
               attrs={this.props.pdpItem}
               addToCart={this.props.addToCart}
               initialSelection={this.state.initialSelection}
+              selectedAttrs={this.state.selectedAttrs.attributes}
               isSubmitted={this.state.submitted}
               handleChangeSubmit={this.handleChangeSubmit}
               setSelection={this.setSelection}
