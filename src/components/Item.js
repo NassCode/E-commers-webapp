@@ -1,7 +1,11 @@
 import React, { Component } from "react";
 import cartOutline from "./icons/cart-outline.svg";
+import Common from "./icons/Common.svg";
 
 class Item extends Component {
+  state = {
+    hover: false,
+  }
   // find current currency and price in item prices array
   findCurrency = (item) => {
     let currency = this.props.currency;
@@ -21,14 +25,14 @@ class Item extends Component {
       this.props.productProps
     );
 
-    console.log(this.props.productProps);
-
     return (
       <div
         className={`PLPitem ${
           this.props.productProps.inStock ? "" : "outOfStock"
         }`}
         onClick={() => this.props.selectPDPItem(this.props.productProps, "PDP")}
+        onMouseEnter={() => this.setState({ hover: true })}
+        onMouseLeave={() => this.setState({ hover: false })}
       >
         <div>
           <div className="PLPimageContainer">
@@ -38,6 +42,11 @@ class Item extends Component {
               alt={cartOutline}
             />
           </div>
+         {this.state.hover === true && this.props.productProps.inStock === true ? 
+          <div className="quickAdd">
+          <img src={Common} />
+        </div>
+        : null}
           <div className="PLPitemInfo">
             <span>{this.props.productProps.name}</span>
             <span>
