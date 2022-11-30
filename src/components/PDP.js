@@ -13,7 +13,7 @@ class PDP extends Component {
     cart: this.props.cart,
   };
 
-  setSelection = (id, name, value) => {
+  setSelection = (id, name, value, type, displayValue) => {
     let preSelectedAttrs = [...this.state.initialSelection.attributes];
     // console.log(preSelectedAttrs);
     // replace the value of the item in the state if it already exists
@@ -29,7 +29,7 @@ class PDP extends Component {
     });
     // if the item doesn't exist, add it to the state
     if (!itemExists) {
-      selectedAttrs.push({ id: id, name: name, value: value });
+      selectedAttrs.push({ id: id, name: name, value: value, type: type, displayValue: displayValue });
     }
     this.setState({
       selectedAttrs: {
@@ -53,6 +53,8 @@ class PDP extends Component {
       initSelect.attributes.push({
         name: attr.name,
         value: attr.items[0].value,
+        displayValue: attr.items[0].displayValue,
+        type: attr.type,
       });
     });
     // console.log('rendered');
@@ -73,6 +75,8 @@ class PDP extends Component {
       initSelect.attributes.push({
         name: attr.name,
         value: attr.items[0].value,
+        displayValue: attr.items[0].displayValue,
+        type: attr.type,
       });
     });
     // console.log('rendered');

@@ -7,6 +7,27 @@ class Attrs extends Component {
     attributes: [],
   };
 
+  // selected = (attr) => {
+  //   console.log(attr);
+  //   if (this.props.selectedAttrs.length === 0) {
+  //     if (attr.value === this.props.initialSelection.attributes[attr.name].value) {
+  //       return true;
+  //     } else {
+  //       return false;
+  //     }
+  //   } else {
+  //     if (attr.value === this.props.selectedAttrs.attributes[attr.name].value) {
+  //       return true;
+  //     } else {
+  //       return false;
+  //     }
+  //   }
+  
+  // }
+
+
+
+
   findCurrency = (item) => {
     let currency = this.props.currency;
     let currencySymbol = "";
@@ -24,6 +45,27 @@ class Attrs extends Component {
     console.log(this.props.selectedAttrs);
     console.log(this.props.initialSelection);
     let { currencySymbol, itemPrice } = this.findCurrency(this.props.attrs);
+    let isSelected = (item, name) => {
+      if (this.props.selectedAttrs.length === 0 && this.props.initialSelection.length === 0) {
+       
+          return false;
+        
+      } else {
+        if (this.props.initialSelection.attributes === undefined) {
+          return false;
+        } else {
+          console.log(item)
+          console.log(name)
+          let selected = this.props.initialSelection.attributes.find((attr) => attr.name === name);
+          console.log(this.props.initialSelection);
+          console.log(selected);
+          if (selected.value === item.value) {
+          return true;
+          }
+        }
+      }
+    }
+    
     
     // console.log(this.state);
     return (
@@ -40,12 +82,15 @@ class Attrs extends Component {
                 <div className="itemAtrrs">
                   {attr.items.map((item, i) => (
                     <div key={item.id}>
-                      <h2 className="attrsRep"
+                      <h2 className={`attrsRep ${isSelected(item, attr.name) ?
+                        "attrSelected" : ""}`}
                         onClick={() =>
                           this.props.setSelection(
                             this.props.attrs.id,
                             attr.name,
-                            item.value
+                            item.value,
+                            attr.type,
+                            item.displayValue
                           )
                         }
                       >

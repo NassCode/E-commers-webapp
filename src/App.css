@@ -175,3 +175,7 @@ body {
 .attrsRep {
   border: 1px solid black;
 }
+
+.attrSelected {
+  background-color: chartreuse;
+}
