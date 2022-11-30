@@ -179,3 +179,12 @@ body {
 .attrSelected {
   background-color: chartreuse;
 }
+
+.colorSelected {
+  border: 2px solid black;
+}
+
+.colorBox {
+  width: 20px;
+  height: 20px;
+}
