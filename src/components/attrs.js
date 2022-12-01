@@ -45,7 +45,7 @@ class Attrs extends Component {
     // console.log(this.props.selectedAttrs);
     // console.log(this.props.initialSelection);
     let { currencySymbol, itemPrice } = this.findCurrency(this.props.attrs);
-    let isSelected = (item, name, type) => {
+    let isSelected = (item, name) => {
       if (this.props.selectedAttrs.length === 0 && this.props.initialSelection.length === 0) {
        
           return false;
@@ -55,12 +55,11 @@ class Attrs extends Component {
           return false;
         } else {
           // console.log(item)
-          console.log(type)
+          // console.log(name)
           let selected = this.props.initialSelection.attributes.find((attr) => attr.name === name);
           // console.log(this.props.initialSelection);
           // console.log(selected);
           if (selected.value === item.value) {
-            console.log(item)
           return true;
           }
         }
@@ -83,9 +82,8 @@ class Attrs extends Component {
                 <div className="itemAtrrs">
                   {attr.items.map((item, i) => (
                     <div key={item.id}>
-                      <h2 className={`attrsRep ${isSelected(item, attr.name, attr.type) ?
+                      <h2 className={`attrsRep ${isSelected(item, attr.name) ?
                         "attrSelected" : ""}`}
-                        style={{ backgroundColor: attr.type === "swatch" ? item.value : "" }}
                         onClick={() =>
                           this.props.setSelection(
                             this.props.attrs.id,
@@ -96,8 +94,7 @@ class Attrs extends Component {
                           )
                         }
                       >
-                        {attr.type === "swatch" ? <div className={`colorBox ${isSelected(item, attr.name, attr.type) ?
-                        "colorSelected" : ""}`}></div> : item.displayValue}
+                        {item.displayValue}
                       </h2>
                     </div>
                   ))}

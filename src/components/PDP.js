@@ -57,6 +57,15 @@ class PDP extends Component {
         type: attr.type,
       });
     });
+
+    console.log(this.state.selectedAttrs.attributes);
+    let newAttrs = JSON.parse(JSON.stringify(this.state.selectedAttrs.attributes));
+
+    console.log(newAttrs);
+    initSelect.attributes = newAttrs;
+    
+    
+
     // console.log('rendered');
     this.setState({ initialSelection: initSelect });
 
