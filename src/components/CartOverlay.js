@@ -80,7 +80,7 @@ class CartOverlay extends Component {
               ))}
             </div>}
             <div>
-              <button>View Bag</button>
+              <button onClick={() => this.props.changeLocation("Cart")}>View Bag</button>
               <button>Checkout</button>
 
             </div>

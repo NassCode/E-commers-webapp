@@ -8,6 +8,7 @@ import { client } from "./index";
 import { CATEGORIES } from "./GraphQL/Queries";
 import PDP from "./components/PDP";
 import { CurrencyProvider } from "./currencyContext";
+import Cart from "./components/cart";
 
 class App extends Component {
   state = {
@@ -148,6 +149,7 @@ class App extends Component {
               selectCurrency={this.selectCurrency}
               currency={this.state.currency}
               tabs={this.state.categoriesList}
+              changeLocation={this.changeLocation}
 
             />
           </div>
@@ -180,6 +182,15 @@ class App extends Component {
                 currency={this.state.currency}
               />
             ) : null}
+
+            {this.state.location === "Cart" &&
+            this.state.categories.length !== 0 ? (
+              <Cart
+                cart={this.state.cart} />
+            ) : null}
+
+
+
           </div>
         </div>
       </CurrencyProvider>

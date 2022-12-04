@@ -36,6 +36,7 @@ class Navbar extends Component {
               decrementQuantity={this.props.decrementQuantity}
               toggleCartOverlay={this.props.toggleCartOverlay}
               currency={this.props.currency}
+              changeLocation={this.props.changeLocation}
             />
           </span>
         </div>

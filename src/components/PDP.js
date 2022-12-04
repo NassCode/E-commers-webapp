@@ -61,13 +61,33 @@ class PDP extends Component {
     console.log(this.state.selectedAttrs.attributes);
     let newAttrs = JSON.parse(JSON.stringify(this.state.selectedAttrs.attributes));
 
+    if (this.state.selectedAttrs.attributes.length !== 0) {
+      
+
     // console.log(newAttrs);
     initSelect.attributes = newAttrs;
-    
-    
-
-    // console.log('rendered');
     this.setState({ initialSelection: initSelect });
+
+
+    } else {
+      let defaulClick = {
+        itemInfo: this.props.pdpItem,
+        quantity: 1,
+        attributes: [],
+      }
+  
+      defaulClick.attributes = newAttrs;
+  
+      
+      
+  
+      // console.log('rendered');
+      this.setState({ initialSelection: initSelect,
+        selectedAttrs: defaulClick });
+
+    }
+    
+    
 
     
   }

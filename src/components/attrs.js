@@ -22,11 +22,8 @@ class Attrs extends Component {
   //       return false;
   //     }
   //   }
-  
+
   // }
-
-
-
 
   findCurrency = (item) => {
     let currency = this.props.currency;
@@ -42,31 +39,43 @@ class Attrs extends Component {
   };
 
   render() {
-    console.log(this.props.selectedAttrs);
-    console.log(this.props.initialSelection);
+    // console.log(this.props.selectedAttrs);
+    // console.log(this.props.initialSelection);
     let { currencySymbol, itemPrice } = this.findCurrency(this.props.attrs);
     let isSelected = (item, name, type) => {
-      if (this.props.selectedAttrs.length === 0 && this.props.initialSelection.length === 0) {
-       
-          return false;
-        
+      if (
+        this.props.selectedAttrs.length === 0 &&
+        this.props.initialSelection.length === 0
+      ) {
+        console.log("no selection");
+        return false;
       } else {
         if (this.props.initialSelection.attributes === undefined) {
+          console.log("im here")
           return false;
         } else {
           // console.log(item)
           // console.log(name)
-          let selected = this.props.initialSelection.attributes.find((attr) => attr.name === name);
-          // console.log(this.props.initialSelection);
-          console.log(type);
-          if (selected.value === item.value) {
-          return true;
+          let selected = this.props.initialSelection.attributes.find(
+            (attr) => attr.name === name
+          );
+          console.log('selected');
+
+          if (selected === undefined) {
+
+            console.log("undefined");
+            return false;
+          } else {
+            if (selected.value === item.value) {
+              console.log("true");
+              return true;
+            }
           }
+          // console.log(this.props.initialSelection);
         }
       }
-    }
-    
-    
+    };
+
     // console.log(this.state);
     return (
       <div className="Attrs">
@@ -82,8 +91,12 @@ class Attrs extends Component {
                 <div className="itemAtrrs">
                   {attr.items.map((item, i) => (
                     <div key={item.id}>
-                      <h2 className={`attrsRep ${isSelected(item, attr.name, attr.type) ?
-                        "attrSelected" : ""}`}
+                      <h2
+                        className={`attrsRep ${
+                          isSelected(item, attr.name, attr.type)
+                            ? "attrSelected"
+                            : ""
+                        }`}
                         style={{
                           backgroundColor:
                             attr.type === "swatch" ? item.value : "",
