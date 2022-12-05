@@ -33,7 +33,7 @@ class Item extends Component {
     let { currencySymbol, itemPrice } = this.findCurrency(
       this.props.productProps
     );
-    console.log(this.props);
+    // console.log(this.props);
 
     return (
       <div
@@ -52,7 +52,7 @@ class Item extends Component {
               alt={cartOutline}
             />
           </div>
-         {this.state.hover === true && this.props.productProps.inStock === true ? 
+         {this.state.hover === true && this.props.productProps.inStock === true && this.props.productProps.attributes.length === 0 ? 
           <div onClick={this.handleSubmitt} className="quickAdd">
           <img src={Common} />
         </div>

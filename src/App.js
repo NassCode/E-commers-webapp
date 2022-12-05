@@ -63,7 +63,7 @@ class App extends Component {
 
   addToCart = (item) => {
     // check if item is already in cart
-    console.log(item);
+    // console.log(item);
     let itemInCart = this.state.cart.find((cartItem) => {
       return cartItem.itemInfo.id === item.itemInfo.id;
     });
@@ -82,13 +82,13 @@ class App extends Component {
           })
         );
       });
-      console.log(newItemInCart);
+      // console.log(newItemInCart);
 
       if (newItemInCart === undefined) {
-        console.log(item);
+        // console.log(item);
         this.setState({ cart: [...this.state.cart, item] });
       } else {
-        console.log(newItemInCart);
+        // console.log(newItemInCart);
         let newCart = [...this.state.cart];
         let index = newCart.indexOf(newItemInCart);
         newCart[index].quantity++;
@@ -131,7 +131,7 @@ class App extends Component {
   }
 
   render() {
-    // console.log(this.state.categoriesList);
+    console.log(this.state.cart);
     return (
       <CurrencyProvider value={this.state.currency}>
         <div>
