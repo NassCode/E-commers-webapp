@@ -20,10 +20,20 @@ class Item extends Component {
     return { currencySymbol, itemPrice };
   };
 
+  handleSubmitt = () => {
+    let itemToSubmit = {
+      itemInfo: this.props.productProps,
+      quantity: 1,
+      attributes: [],
+    }
+    this.props.addToCart(itemToSubmit);
+  };
+
   render() {
     let { currencySymbol, itemPrice } = this.findCurrency(
       this.props.productProps
     );
+    console.log(this.props);
 
     return (
       <div
@@ -43,7 +53,7 @@ class Item extends Component {
             />
           </div>
          {this.state.hover === true && this.props.productProps.inStock === true ? 
-          <div className="quickAdd">
+          <div onClick={this.handleSubmitt} className="quickAdd">
           <img src={Common} />
         </div>
         : null}

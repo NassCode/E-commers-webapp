@@ -58,7 +58,7 @@ class PDP extends Component {
       });
     });
 
-    console.log(this.state.selectedAttrs.attributes);
+    // console.log(this.state.selectedAttrs.attributes);
     let newAttrs = JSON.parse(JSON.stringify(this.state.selectedAttrs.attributes));
 
     if (this.state.selectedAttrs.attributes.length !== 0) {

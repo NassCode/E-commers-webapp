@@ -22,6 +22,7 @@ export default class PLP extends Component {
               productProps={product}
               selectPDPItem={this.props.selectPDPItem}
               currency={this.props.currency}
+              addToCart={this.props.addToCart}
             />
           ))}
         </div>

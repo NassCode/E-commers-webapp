@@ -47,11 +47,11 @@ class Attrs extends Component {
         this.props.selectedAttrs.length === 0 &&
         this.props.initialSelection.length === 0
       ) {
-        console.log("no selection");
+        // console.log("no selection");
         return false;
       } else {
         if (this.props.initialSelection.attributes === undefined) {
-          console.log("im here")
+          // console.log("im here")
           return false;
         } else {
           // console.log(item)
@@ -59,15 +59,15 @@ class Attrs extends Component {
           let selected = this.props.initialSelection.attributes.find(
             (attr) => attr.name === name
           );
-          console.log('selected');
+          // console.log('selected');
 
           if (selected === undefined) {
 
-            console.log("undefined");
+            // console.log("undefined");
             return false;
           } else {
             if (selected.value === item.value) {
-              console.log("true");
+              // console.log("true");
               return true;
             }
           }

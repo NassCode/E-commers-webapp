@@ -63,6 +63,7 @@ class App extends Component {
 
   addToCart = (item) => {
     // check if item is already in cart
+    console.log(item);
     let itemInCart = this.state.cart.find((cartItem) => {
       return cartItem.itemInfo.id === item.itemInfo.id;
     });
@@ -169,6 +170,9 @@ class App extends Component {
                 changeLocation={this.changeLocation}
                 selectPDPItem={this.selectPDPItem}
                 currency={this.state.currency}
+                addToCart={this.addToCart}
+
+
               />
             ) : null}
 
