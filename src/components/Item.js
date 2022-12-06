@@ -40,12 +40,12 @@ class Item extends Component {
         className={`PLPitem ${
           this.props.productProps.inStock ? "" : "outOfStock"
         }`}
-        onClick={() => this.props.selectPDPItem(this.props.productProps, "PDP")}
+       
         onMouseEnter={() => this.setState({ hover: true })}
         onMouseLeave={() => this.setState({ hover: false })}
       >
         <div>
-          <div className="PLPimageContainer">
+          <div  onClick={() => this.props.selectPDPItem(this.props.productProps, "PDP")} className="PLPimageContainer">
             <img
               className="PLPimage"
               src={this.props.productProps.gallery[0]}
@@ -53,11 +53,11 @@ class Item extends Component {
             />
           </div>
          {this.state.hover === true && this.props.productProps.inStock === true && this.props.productProps.attributes.length === 0 ? 
-          <div onClick={this.handleSubmitt} className="quickAdd">
-          <img src={Common} />
+          <div onClick={this.handleSubmitt} >
+          <img className="quickAdd" src={Common} />
         </div>
         : null}
-          <div className="PLPitemInfo">
+          <div  onClick={() => this.props.selectPDPItem(this.props.productProps, "PDP")} className="PLPitemInfo">
             <span>{this.props.productProps.name}</span>
             <span>
               {itemPrice} {currencySymbol}
@@ -65,7 +65,7 @@ class Item extends Component {
           </div>
         </div>
         {this.props.productProps.inStock ? null : (
-          <div className="outOfStockOverlay">
+          <div  onClick={() => this.props.selectPDPItem(this.props.productProps, "PDP")} className="outOfStockOverlay">
             <h4>OUT OF STOCK</h4>
           </div>
         )}

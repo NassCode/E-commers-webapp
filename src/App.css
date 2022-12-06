@@ -169,6 +169,7 @@ body {
 .quickAdd {
   position: absolute;
   right: 31px;
+  border-radius: 50%;
  
 }
 

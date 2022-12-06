@@ -1,6 +1,7 @@
 import { Component } from "react";
 import CartOverlay from "./CartOverlay";
 import CurrencyMenu from "./currency";
+import BrandIcon from "./icons/BrandIcon.svg";
 
 class Navbar extends Component {
   render() {
@@ -17,7 +18,9 @@ class Navbar extends Component {
           ))}
         </div>
 
-        <span>\__LOGO__/</span>
+        <span>
+          <img className="brandIcon" src={BrandIcon} />
+        </span>
 
         <div className="cartContainer">
           <span>
@@ -26,6 +29,7 @@ class Navbar extends Component {
               currencyMenuState={this.props.currencyMenuState}
               currencies={this.props.currencies}
               selectCurrency={this.props.selectCurrency}
+              currency={this.props.currency}
             />
           </span>
           <span>

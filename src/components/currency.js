@@ -1,51 +1,77 @@
 import React from "react";
 import { client } from "../index";
 import { CURRENCIES } from "../GraphQL/Queries";
-
+import dropup from "./icons/dropup.svg";
+import dropdown from "./icons/dropdown.svg";
 
 class CurrencyMenu extends React.Component {
   constructor(props) {
     super(props);
-    this.ref = React.createRef();
-    this.handleClickOutside = this.handleClickOutside.bind(this);
-  }
-  
 
-  
+    this.ref = React.createRef();
+    this.iconRef = React.createRef();
+    this.handleClickOutside = this.handleClickOutside.bind(this);
+    this.handleIconClick = this.handleIconClick.bind(this);
+  }
+
   // detect click outside of currency menu
   componentDidMount() {
     document.addEventListener("mousedown", this.handleClickOutside, true);
+    document.addEventListener("mousedown", this.handleIconClick, true);
   }
 
   handleClickOutside(event) {
-    if (this.ref.current && !this.ref.current.contains(event.target)) {
+    if (
+      this.ref.current &&
+      !this.ref.current.contains(event.target) &&
+      event.target.accessKey !== "currencyKey"
+    ) {
+      console.log("clicked outside and $ is pressed");
+      this.props.toggleCurrencyMenu();
+    } else if (
+      this.ref.current &&
+      !this.ref.current.contains(event.target) &&
+      event.target.accessKey === "currencyKey"
+    ) {
+      console.log("clicked outside");
+      // this.props.toggleCurrencyMenu();
+    }
+  }
+
+  handleIconClick = (event) => {
+    if (this.iconRef.current && this.iconRef.current.contains(event.target)) {
+      console.log("clicked currency");
       this.props.toggleCurrencyMenu();
     }
   };
 
-  
-
   render() {
-    // console.log(this.props.currencies);
+    console.log(this.props);
     return (
-      <div className="currencyMenu">
-        <h3 onClick={() => this.props.toggleCurrencyMenu()}>$</h3>
-        {this.props.currencyMenuState === false ? null : 
-          <div ref={this.ref}>
+      <div>
+        <h3 ref={this.iconRef} accessKey="currencyKey">
+          {this.props.currency.symbol}
+        </h3>
+        {this.props.currencyMenuState === false ? null : (
+          <div className="currencyMenu" ref={this.ref}>
             {this.props.currencies.length === 0 ? null : (
               <div>
                 {this.props.currencies.map((currency, i) => {
                   return (
-                    <div key={i} onClick={() => this.props.selectCurrency(currency)}>
-                   
-                      <h3>{currency.symbol} {currency.label}</h3>
+                    <div
+                      key={i}
+                      onClick={() => this.props.selectCurrency(currency)}
+                    >
+                      <h3>
+                        {currency.symbol} {currency.label}
+                      </h3>
                     </div>
                   );
                 })}
               </div>
             )}
           </div>
-        }
+        )}
       </div>
     );
   }
