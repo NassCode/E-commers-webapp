@@ -9,6 +9,7 @@ body {
 .container {
   display: flex;
   justify-content: space-between;
+
   gap: 10px;
   gap: 10px 20px;
   row-gap: 10px;
@@ -27,6 +28,7 @@ body {
 .cartContainer {
   display: flex;
   justify-content: flex-end;
+  align-items: center;
   gap: 10px;
   gap: 10px 20px;
   row-gap: 10px;
@@ -170,7 +172,6 @@ body {
   position: absolute;
   right: 31px;
   border-radius: 50%;
- 
 }
 
 .attrsRep {

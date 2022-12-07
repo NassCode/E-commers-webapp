@@ -74,7 +74,7 @@ class CartOverlay extends Component {
 
     return (
       <div>
-        <img ref={this.iconRef} accessKey="cartKey" src={cartOutline} />
+        <img className="cartIcon" ref={this.iconRef} accessKey="cartKey" src={cartOutline} />
         {this.props.cartOverlayState === false ? null : (
           <div ref={this.ref} className="cartOverLay">
             {this.props.cartItems.length === 0 ? (
