@@ -189,3 +189,9 @@ body {
   width: 20px;
   height: 20px;
 }
+
+.currencyIcon {
+  display: flex;
+  flex-direction: row;
+  gap: 5px;
+}

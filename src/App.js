@@ -131,7 +131,7 @@ class App extends Component {
   }
 
   render() {
-    console.log(this.state.cart);
+    // console.log(this.state.cart);
     return (
       <CurrencyProvider value={this.state.currency}>
         <div>

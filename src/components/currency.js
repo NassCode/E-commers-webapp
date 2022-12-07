@@ -1,7 +1,7 @@
 import React from "react";
 import { client } from "../index";
 import { CURRENCIES } from "../GraphQL/Queries";
-import dropup from "./icons/dropup.svg";
+import collabs from "./icons/collabs.svg";
 import dropdown from "./icons/dropdown.svg";
 
 class CurrencyMenu extends React.Component {
@@ -26,32 +26,41 @@ class CurrencyMenu extends React.Component {
       !this.ref.current.contains(event.target) &&
       event.target.accessKey !== "currencyKey"
     ) {
-      console.log("clicked outside and $ is pressed");
+      // console.log("clicked outside and $ is pressed");
       this.props.toggleCurrencyMenu();
     } else if (
       this.ref.current &&
       !this.ref.current.contains(event.target) &&
       event.target.accessKey === "currencyKey"
     ) {
-      console.log("clicked outside");
+      // console.log("clicked outside");
       // this.props.toggleCurrencyMenu();
+      return;
     }
   }
 
   handleIconClick = (event) => {
     if (this.iconRef.current && this.iconRef.current.contains(event.target)) {
-      console.log("clicked currency");
+      // console.log("clicked currency");
       this.props.toggleCurrencyMenu();
     }
   };
 
   render() {
-    console.log(this.props);
+    // console.log(this.props);
     return (
       <div>
-        <h3 ref={this.iconRef} accessKey="currencyKey">
-          {this.props.currency.symbol}
-        </h3>
+        <div className="currencyIcon">
+          <h3 ref={this.iconRef} accessKey="currencyKey">
+            {this.props.currency.symbol}
+          </h3>
+
+          <img
+            src={`${
+              this.props.currencyMenuState === false ? dropdown : collabs
+            }`}
+          />
+        </div>
         {this.props.currencyMenuState === false ? null : (
           <div className="currencyMenu" ref={this.ref}>
             {this.props.currencies.length === 0 ? null : (
