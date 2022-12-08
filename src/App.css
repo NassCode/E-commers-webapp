@@ -140,6 +140,21 @@ body {
   /* z-index: 100; */
 }
 
+.cart {
+  position: absolute;
+  top: 10%;
+  width: auto;
+  height: auto;
+  margin-left: 101px;
+  /* float: right; */
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  /* z-index: 100; */
+}
+
 .currencyMenu {
   position: absolute;
   border: 1px solid black;

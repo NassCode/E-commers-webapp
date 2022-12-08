@@ -23,7 +23,6 @@ class App extends Component {
     cartOverlay: false,
     currencyMenu: false,
   };
-  
 
   componentDidMount() {
     client
@@ -128,7 +127,11 @@ class App extends Component {
 
   selectCurrency = (currency) => {
     this.setState({ currency: currency });
-  }
+  };
+
+  viewCart = () => {
+    this.setState({ location: "Cart", cartOverlay: false });
+  };
 
   render() {
     // console.log(this.state.cart);
@@ -151,7 +154,7 @@ class App extends Component {
               currency={this.state.currency}
               tabs={this.state.categoriesList}
               changeLocation={this.changeLocation}
-
+              viewCart={this.viewCart}
             />
           </div>
           <div>
@@ -171,8 +174,6 @@ class App extends Component {
                 selectPDPItem={this.selectPDPItem}
                 currency={this.state.currency}
                 addToCart={this.addToCart}
-
-
               />
             ) : null}
 
@@ -190,11 +191,12 @@ class App extends Component {
             {this.state.location === "Cart" &&
             this.state.categories.length !== 0 ? (
               <Cart
-                cart={this.state.cart} />
+                cartItems={this.state.cart}
+                incrementQuantity={this.incrementQuantity}
+                decrementQuantity={this.decrementQuantity}
+                currency={this.state.currency}
+              />
             ) : null}
-
-
-
           </div>
         </div>
       </CurrencyProvider>

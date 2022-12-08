@@ -53,13 +53,15 @@ class CurrencyMenu extends React.Component {
         <div className="currencyIcon">
           <h3 ref={this.iconRef} accessKey="currencyKey">
             {this.props.currency.symbol}
-          </h3>
-
-          <img
+            {" "}
+            <img
             src={`${
               this.props.currencyMenuState === false ? dropdown : collabs
             }`}
           />
+          </h3>
+
+          
         </div>
         {this.props.currencyMenuState === false ? null : (
           <div className="currencyMenu" ref={this.ref}>
