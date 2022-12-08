@@ -34,6 +34,8 @@ class CartItem extends Component {
       }
     };
 
+    let totalPrice = itemPrice * this.props.item.quantity;
+
     return (
       <div className="cartItem">
         <div className="cartItemInfo">
@@ -55,7 +57,7 @@ class CartItem extends Component {
             </span>
           </h3>
           <h3>
-            {itemPrice * this.props.item.quantity} {currencySymbol}
+            {parseFloat(totalPrice.toFixed(2))} {currencySymbol}
           </h3>
           <span>
           </span>
