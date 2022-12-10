@@ -211,3 +211,25 @@ body {
   flex-direction: row;
   gap: 5px;
 }
+
+.iconWrapper {
+  position: relative;
+}
+
+.miniCartCount {
+  position: absolute;
+  top: -9px;
+  right: -9px;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  margin-top: 0px;
+  align-items: center;
+  text-align: center;
+  font-size: small;
+  
+  background-color: black;
+  color: white;
+  
+
+}

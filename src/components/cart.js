@@ -16,7 +16,7 @@ class Cart extends Component {
   };
 
   render() {
-    console.log(this.props);
+    // console.log(this.props);
      // console.log(this.props);
     // sum up total of cart items quantity
     let total = 0;
@@ -55,6 +55,7 @@ class Cart extends Component {
                       incrementQuantity={this.props.incrementQuantity}
                       decrementQuantity={this.props.decrementQuantity}
                       currency={this.props.currency}
+                      mainCart
                     />
                   </div>
                 </div>

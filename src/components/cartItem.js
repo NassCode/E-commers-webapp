@@ -1,6 +1,10 @@
 import { Component } from "react";
 
 class CartItem extends Component {
+  state = {
+    currentImageIndex: 0,
+  }
+
   findCurrency = (item) => {
     let currency = this.props.currency;
     let currencySymbol = "";
@@ -14,7 +18,26 @@ class CartItem extends Component {
     return { currencySymbol, itemPrice };
   };
 
+  imageSwitch = (direction) => {
+    let { currentImageIndex } = this.state;
+    let { gallery } = this.props.item.itemInfo;
+    if (direction === "next") {
+      if (currentImageIndex === gallery.length - 1) {
+        this.setState({ currentImageIndex: 0 });
+      } else {
+        this.setState({ currentImageIndex: currentImageIndex + 1 });
+      }
+    } else if (direction === "prev") {
+      if (currentImageIndex === 0) {
+        this.setState({ currentImageIndex: gallery.length - 1 });
+      } else {
+        this.setState({ currentImageIndex: currentImageIndex - 1 });
+      }
+    }
+  };
+
   render() {
+    // console.log(this.props.mainCart);
     let { currencySymbol, itemPrice } = this.findCurrency(this.props.item);
 
     let isSelected = (item, name) => {
@@ -34,7 +57,10 @@ class CartItem extends Component {
       }
     };
 
+
+
     let totalPrice = itemPrice * this.props.item.quantity;
+    console.log(this.props.item.itemInfo.gallery);
 
     return (
       <div className="cartItem">
@@ -64,8 +90,27 @@ class CartItem extends Component {
           <div>
             <img
               className="miniCartImg"
-              src={this.props.item.itemInfo.gallery[0]}
+              src={this.props.item.itemInfo.gallery[this.state.currentImageIndex]}
             />
+            {this.props.item.itemInfo.gallery.length > 1 ? (
+              <div className="miniCartImgNav">
+                <button
+                  onClick={() => this.imageSwitch("prev")}
+                  className="miniCartImgNavBtn"
+                >
+                  {"<"}
+                </button>
+                <button
+                  onClick={() => this.imageSwitch("next")}
+                  className="miniCartImgNavBtn"
+                >
+                  {">"}
+                </button>
+              </div>
+            ) : (
+              ""
+            )}
+
             {this.props.item.itemInfo.attributes.map((attr, i) => (
               <div key={attr.id}>
                 <h4>{attr.name}:</h4>

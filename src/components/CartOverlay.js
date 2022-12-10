@@ -74,7 +74,16 @@ class CartOverlay extends Component {
 
     return (
       <div>
-        <img className="cartIcon" ref={this.iconRef} accessKey="cartKey" src={cartOutline} />
+        <div className="iconWrapper">
+          <img
+            className="cartIcon"
+            ref={this.iconRef}
+            accessKey="cartKey"
+            src={cartOutline}
+          />
+          {total === 0 ? null : <p className="miniCartCount">{total}</p>}
+        </div>
+
         {this.props.cartOverlayState === false ? null : (
           <div ref={this.ref} className="cartOverLay">
             {this.props.cartItems.length === 0 ? (
@@ -99,9 +108,7 @@ class CartOverlay extends Component {
               </div>
             )}
             <div>
-              <button onClick={() => this.props.viewCart()}>
-                View Bag
-              </button>
+              <button onClick={() => this.props.viewCart()}>View Bag</button>
               <button>Checkout</button>
             </div>
             <div>
