@@ -3,7 +3,7 @@ import { Component } from "react";
 class CartItem extends Component {
   state = {
     currentImageIndex: 0,
-  }
+  };
 
   findCurrency = (item) => {
     let currency = this.props.currency;
@@ -57,42 +57,77 @@ class CartItem extends Component {
       }
     };
 
-
-
     let totalPrice = itemPrice * this.props.item.quantity;
     console.log(this.props.item.itemInfo.gallery);
 
     return (
       <div className="cartItem">
         <div className="cartItemInfo">
-          <h3>{this.props.item.itemInfo.brand}</h3>
-          <h3>{this.props.item.itemInfo.name}</h3>
-          <h3>
-            {this.props.item.quantity}{" "}
-            <span>
-              <button
-                onClick={() => this.props.incrementQuantity(this.props.item)}
-              >
-                +
-              </button>
-              <button
-                onClick={() => this.props.decrementQuantity(this.props.item)}
-              >
-                -
-              </button>
-            </span>
-          </h3>
-          <h3>
-            {parseFloat(totalPrice.toFixed(2))} {currencySymbol}
-          </h3>
-          <span>
-          </span>
+          <div className="itemInfo">
+            <h3>{this.props.item.itemInfo.brand}</h3>
+            <h3>{this.props.item.itemInfo.name}</h3>
+            <h3>
+              {parseFloat(totalPrice.toFixed(2))} {currencySymbol}
+            </h3>
+            <div className="itemAttributes">
+              {this.props.item.itemInfo.attributes.map((attr, i) => (
+                <div key={attr.id}>
+                  <h4>{attr.name}:</h4>
+                  <div className="itemAtrrs">
+                    {attr.items.map((item, i) => (
+                      <div key={item.id}>
+                        <h2
+                          className={`attrsRep ${
+                            isSelected(item, attr.name) ? "attrSelected" : ""
+                          }`}
+                          style={{
+                            backgroundColor:
+                              attr.type === "swatch" ? item.value : "",
+                          }}
+                        >
+                          {attr.type === "swatch" ? (
+                            <div
+                              className={`colorBox ${
+                                isSelected(item, attr.name)
+                                  ? "colorSelected"
+                                  : ""
+                              }`}
+                            ></div>
+                          ) : (
+                            item.displayValue
+                          )}
+                        </h2>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div className="quantityLayout">
+            <button
+              onClick={() => this.props.incrementQuantity(this.props.item)}
+            >
+              +
+            </button>
+            <h3>{this.props.item.quantity} </h3>
+            <button
+              onClick={() => this.props.decrementQuantity(this.props.item)}
+            >
+              -
+            </button>
+          </div>
+
           <div>
             <img
               className="miniCartImg"
-              src={this.props.item.itemInfo.gallery[this.state.currentImageIndex]}
+              src={
+                this.props.item.itemInfo.gallery[this.state.currentImageIndex]
+              }
             />
-            {this.props.item.itemInfo.gallery.length > 1 ? (
+            {this.props.item.itemInfo.gallery.length > 1 &&
+            this.props.miniCart === false ? (
               <div className="miniCartImgNav">
                 <button
                   onClick={() => this.imageSwitch("prev")}
@@ -110,37 +145,6 @@ class CartItem extends Component {
             ) : (
               ""
             )}
-
-            {this.props.item.itemInfo.attributes.map((attr, i) => (
-              <div key={attr.id}>
-                <h4>{attr.name}:</h4>
-                <div className="itemAtrrs">
-                  {attr.items.map((item, i) => (
-                    <div key={item.id}>
-                      <h2
-                        className={`attrsRep ${
-                          isSelected(item, attr.name) ? "attrSelected" : ""
-                        }`}
-                        style={{
-                          backgroundColor:
-                            attr.type === "swatch" ? item.value : "",
-                        }}
-                      >
-                        {attr.type === "swatch" ? (
-                          <div
-                            className={`colorBox ${
-                              isSelected(item, attr.name) ? "colorSelected" : ""
-                            }`}
-                          ></div>
-                        ) : (
-                          item.displayValue
-                        )}
-                      </h2>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            ))}
           </div>
         </div>
       </div>

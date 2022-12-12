@@ -155,6 +155,7 @@ class App extends Component {
               tabs={this.state.categoriesList}
               changeLocation={this.changeLocation}
               viewCart={this.viewCart}
+              location={this.state.location}
             />
           </div>
           <div>
@@ -195,6 +196,7 @@ class App extends Component {
                 incrementQuantity={this.incrementQuantity}
                 decrementQuantity={this.decrementQuantity}
                 currency={this.state.currency}
+                location={this.state.location}
               />
             ) : null}
           </div>

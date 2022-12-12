@@ -43,6 +43,7 @@ class Navbar extends Component {
             currency={this.props.currency}
             changeLocation={this.props.changeLocation}
             viewCart={this.props.viewCart}
+            location={this.props.location}
           />
         </div>
       </div>

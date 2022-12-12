@@ -55,7 +55,8 @@ class Cart extends Component {
                       incrementQuantity={this.props.incrementQuantity}
                       decrementQuantity={this.props.decrementQuantity}
                       currency={this.props.currency}
-                      mainCart
+                      miniCart={false}
+                      location={this.props.location}
                     />
                   </div>
                 </div>

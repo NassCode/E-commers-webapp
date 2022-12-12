@@ -101,6 +101,8 @@ class CartOverlay extends Component {
                         incrementQuantity={this.props.incrementQuantity}
                         decrementQuantity={this.props.decrementQuantity}
                         currency={this.props.currency}
+                        location={this.props.location}
+                        miniCart={true}
                       />
                     </div>
                   </div>
