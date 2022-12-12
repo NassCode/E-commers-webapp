@@ -8,7 +8,7 @@ class CartOverlay extends Component {
     super(props);
     this.ref = React.createRef();
     this.iconRef = React.createRef();
-
+    
     this.handleClickOutside = this.handleClickOutside.bind(this);
     this.handleIconClick = this.handleIconClick.bind(this);
   }
@@ -39,6 +39,9 @@ class CartOverlay extends Component {
       this.props.toggleCartOverlay();
     }
   };
+
+  
+
 
   findCurrencyIndex = (item) => {
     let currency = this.props.currency;

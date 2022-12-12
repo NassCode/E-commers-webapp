@@ -175,6 +175,7 @@ class App extends Component {
                 selectPDPItem={this.selectPDPItem}
                 currency={this.state.currency}
                 addToCart={this.addToCart}
+                cartOverlayState={this.state.cartOverlay}
               />
             ) : null}
 

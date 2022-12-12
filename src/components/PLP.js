@@ -14,7 +14,6 @@ export default class PLP extends Component {
 
     return (
       <div>
-        <h1>Categories</h1>
         <div className="PLPcontainer">
           {category.products.map((product, i) => (
             <Item
@@ -25,6 +24,11 @@ export default class PLP extends Component {
               addToCart={this.props.addToCart}
             />
           ))}
+          
+            <div className={`${this.props.cartOverlayState === true ? "overcast" : ""}`}>
+              <p></p>
+            </div>
+          
         </div>
       </div>
     );
