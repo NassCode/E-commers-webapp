@@ -27,6 +27,7 @@ body {
   gap: 10px 20px;
   row-gap: 10px;
   column-gap: 20px;
+  padding-left: 100px;
 }
 
 .cartContainer {
@@ -37,6 +38,7 @@ body {
   gap: 10px 20px;
   row-gap: 10px;
   column-gap: 20px;
+  padding-right: 90px;
 }
 
 .PLPcontainer {
@@ -195,8 +197,17 @@ body {
 
 .currencyMenu {
   position: absolute;
-  border: 1px solid black;
 }
+
+.currencyItem:hover {
+  background-color: #EEEEEE;
+}
+
+.currencyRep {
+  padding: 7px;
+}
+
+
 
 .miniCartImg {
   width: 100px;
@@ -225,6 +236,16 @@ body {
   position: absolute;
   right: 31px;
   border-radius: 50%;
+}
+
+.backbutton {
+  border-radius: 50%;
+}
+
+.backsvg {
+  width: 35px;
+  height: 35px;
+  padding-left: 20px;
 }
 
 .attrsRep {

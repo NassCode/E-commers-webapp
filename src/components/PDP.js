@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import PDPGallery from "./PDPGallery";
 import Attrs from "./attrs";
+import back from "./icons/back.svg";
 
 class PDP extends Component {
   state = {
@@ -120,10 +121,8 @@ class PDP extends Component {
     return (
       <div>
         <div className="pdpcontainerT">
-          <div>
-            <button onClick={() => this.props.changeLocation("PLP")}>
-              Back
-            </button>
+          <div className="backbutton">
+            <img className="backsvg" onClick={() => this.props.changeLocation("PLP")} src={back} alt="back" />
           </div>
           <div className="PDPcontainer">
             <div className="galleryContainer">

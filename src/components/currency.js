@@ -69,13 +69,13 @@ class CurrencyMenu extends React.Component {
               <div>
                 {this.props.currencies.map((currency, i) => {
                   return (
-                    <div
+                    <div className="currencyItem"
                       key={i}
                       onClick={() => this.props.selectCurrency(currency)}
                     >
-                      <h3>
+                      <div className="currencyRep">
                         {currency.symbol} {currency.label}
-                      </h3>
+                      </div>
                     </div>
                   );
                 })}
