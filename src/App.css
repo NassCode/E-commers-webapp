@@ -3,7 +3,11 @@ body {
 }
 
 .navbar {
-  margin: 20px;
+  margin: 0px;
+  padding: 10px;
+  position: relative;
+  z-index: 3;
+  background-color: #ffffff;
 }
 
 .container {
@@ -126,6 +130,19 @@ body {
   margin-bottom: 10px;
 }
 
+.itemAttributes {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.attrname {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+
 .itemAtrrs {
   display: flex;
   flex-direction: row;
@@ -139,6 +156,7 @@ body {
   left: 70%;
   width: auto;
   height: auto;
+  padding: 16px;
   /* float: right; */
 
   background-color: rgb(255, 255, 255);
@@ -264,4 +282,19 @@ body {
   flex-direction: row;
   gap: 10px;
   align-items: center;
+}
+
+.cartItem {
+  padding-bottom: 15px;
+}
+
+.itemInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.pdpcontainerT {
+  position: relative;
+
 }

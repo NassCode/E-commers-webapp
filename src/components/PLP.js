@@ -25,7 +25,7 @@ export default class PLP extends Component {
             />
           ))}
           
-            <div className={`${this.props.cartOverlayState === true ? "overcast" : ""}`}>
+            <div className={`${this.props.cartOverlayState === true && this.props.location === "PLP" ? "overcast" : ""}`}>
               <p></p>
             </div>
           

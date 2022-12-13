@@ -176,6 +176,7 @@ class App extends Component {
                 currency={this.state.currency}
                 addToCart={this.addToCart}
                 cartOverlayState={this.state.cartOverlay}
+                location={this.state.location}
               />
             ) : null}
 
@@ -187,6 +188,9 @@ class App extends Component {
                 addToCart={this.addToCart}
                 cart={this.state.cart}
                 currency={this.state.currency}
+                cartOverlayState={this.state.cartOverlay}
+                location={this.state.location}
+
               />
             ) : null}
 
@@ -198,6 +202,8 @@ class App extends Component {
                 decrementQuantity={this.decrementQuantity}
                 currency={this.state.currency}
                 location={this.state.location}
+                cartOverlayState={this.state.cartOverlay}
+
               />
             ) : null}
           </div>

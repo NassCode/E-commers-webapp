@@ -29,7 +29,13 @@ class PDP extends Component {
     });
     // if the item doesn't exist, add it to the state
     if (!itemExists) {
-      selectedAttrs.push({ id: id, name: name, value: value, type: type, displayValue: displayValue });
+      selectedAttrs.push({
+        id: id,
+        name: name,
+        value: value,
+        type: type,
+        displayValue: displayValue,
+      });
     }
     this.setState({
       selectedAttrs: {
@@ -41,7 +47,11 @@ class PDP extends Component {
   };
 
   handleSubmit = () => {
-    this.props.addToCart(this.state.selectedAttrs.attributes.length === 0 ? this.state.initialSelection : this.state.selectedAttrs);
+    this.props.addToCart(
+      this.state.selectedAttrs.attributes.length === 0
+        ? this.state.initialSelection
+        : this.state.selectedAttrs
+    );
     // reset the state
     let initSelect = {
       itemInfo: this.props.pdpItem,
@@ -59,38 +69,30 @@ class PDP extends Component {
     });
 
     // console.log(this.state.selectedAttrs.attributes);
-    let newAttrs = JSON.parse(JSON.stringify(this.state.selectedAttrs.attributes));
+    let newAttrs = JSON.parse(
+      JSON.stringify(this.state.selectedAttrs.attributes)
+    );
 
     if (this.state.selectedAttrs.attributes.length !== 0) {
-      
-
-    // console.log(newAttrs);
-    initSelect.attributes = newAttrs;
-    this.setState({ initialSelection: initSelect });
-
-
+      // console.log(newAttrs);
+      initSelect.attributes = newAttrs;
+      this.setState({ initialSelection: initSelect });
     } else {
       let defaulClick = {
         itemInfo: this.props.pdpItem,
         quantity: 1,
         attributes: [],
-      }
-  
+      };
+
       defaulClick.attributes = newAttrs;
-  
-      
-      
-  
+
       // console.log('rendered');
-      this.setState({ initialSelection: initSelect,
-        selectedAttrs: defaulClick });
-
+      this.setState({
+        initialSelection: initSelect,
+        selectedAttrs: defaulClick,
+      });
     }
-    
-    
-
-    
-  }
+  };
 
   componentDidMount() {
     // update state with default values
@@ -112,36 +114,46 @@ class PDP extends Component {
     this.setState({ initialSelection: initSelect });
   }
 
-  
-
- 
-
   render() {
     // console.log(this.state);
     // console.log(this.props.pdpItem);
     return (
       <div>
-        <div>
-          <button onClick={() => this.props.changeLocation("PLP")}>Back</button>
-        </div>
-        <div className="PDPcontainer">
-          <div className="galleryContainer">
-            <PDPGallery pics={this.props.pdpItem.gallery} />
-          </div>
+        <div className="pdpcontainerT">
           <div>
-            <Attrs
-              attrs={this.props.pdpItem}
-              addToCart={this.props.addToCart}
-              initialSelection={this.state.initialSelection}
-              selectedAttrs={this.state.selectedAttrs.attributes}
-              isSubmitted={this.state.submitted}
-              handleChangeSubmit={this.handleChangeSubmit}
-              setSelection={this.setSelection}
-              handleSubmit={this.handleSubmit}
-              currency={this.props.currency}
-            />
-            {/* <button onClick={() => this.handleSubmit()}>Add To Cart</button> */}
+            <button onClick={() => this.props.changeLocation("PLP")}>
+              Back
+            </button>
           </div>
+          <div className="PDPcontainer">
+            <div className="galleryContainer">
+              <PDPGallery pics={this.props.pdpItem.gallery} />
+            </div>
+            <div>
+              <Attrs
+                attrs={this.props.pdpItem}
+                addToCart={this.props.addToCart}
+                initialSelection={this.state.initialSelection}
+                selectedAttrs={this.state.selectedAttrs.attributes}
+                isSubmitted={this.state.submitted}
+                handleChangeSubmit={this.handleChangeSubmit}
+                setSelection={this.setSelection}
+                handleSubmit={this.handleSubmit}
+                currency={this.props.currency}
+              />
+              {/* <button onClick={() => this.handleSubmit()}>Add To Cart</button> */}
+            </div>
+          </div>
+        </div>
+        <div
+          className={`${
+            this.props.cartOverlayState === true &&
+            this.props.location === "PDP"
+              ? "overcast"
+              : ""
+          }`}
+        >
+          <p></p>
         </div>
       </div>
     );

@@ -64,31 +64,39 @@ class CartItem extends Component {
       <div className="cartItem">
         <div className="cartItemInfo">
           <div className="itemInfo">
-            <h3>{this.props.item.itemInfo.brand}</h3>
-            <h3>{this.props.item.itemInfo.name}</h3>
-            <h3>
+            <>
+            <div>{this.props.item.itemInfo.brand}</div>
+            <div>{this.props.item.itemInfo.name}</div>
+            <h4>
               {parseFloat(totalPrice.toFixed(2))} {currencySymbol}
-            </h3>
+            </h4>
+            </>
+            
             <div className="itemAttributes">
               {this.props.item.itemInfo.attributes.map((attr, i) => (
-                <div key={attr.id}>
-                  <h4>{attr.name}:</h4>
+                <div className="attrname" key={attr.id}>
+                  <div>{attr.name}:</div>
                   <div className="itemAtrrs">
                     {attr.items.map((item, i) => (
                       <div key={item.id}>
-                        <h2
+                        <div
                           className={`attrsRep ${
-                            isSelected(item, attr.name) ? "attrSelected" : ""
+                            isSelected(item, attr.name, attr.type) ? "attrSelected" : ""
                           }`}
                           style={{
                             backgroundColor:
                               attr.type === "swatch" ? item.value : "",
+                            border: attr.type === "swatch" ? "0.5px solid #cdcdcd" : "",
+                            paddingTop: attr.type === "swatch" ? "0" : "10px",
+                            paddingBottom: attr.type === "swatch" ? "0" : "10px",
+                            paddingLeft: attr.type === "swatch" ? "0" : "20px",
+                            paddingRight: attr.type === "swatch" ? "0" : "20px",
                           }}
                         >
                           {attr.type === "swatch" ? (
                             <div
                               className={`colorBox ${
-                                isSelected(item, attr.name)
+                                isSelected(item, attr.name, attr.type)
                                   ? "colorSelected"
                                   : ""
                               }`}
@@ -96,7 +104,7 @@ class CartItem extends Component {
                           ) : (
                             item.displayValue
                           )}
-                        </h2>
+                        </div>
                       </div>
                     ))}
                   </div>

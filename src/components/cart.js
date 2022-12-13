@@ -79,6 +79,9 @@ class Cart extends Component {
           </div>
           
         </div>
+        <div className={`${this.props.cartOverlayState === true && this.props.location === "Cart" ? "overcast" : ""}`}>
+              <p></p>
+            </div>
       
     </div>
     );
