@@ -8,7 +8,7 @@ class CartOverlay extends Component {
     super(props);
     this.ref = React.createRef();
     this.iconRef = React.createRef();
-    
+
     this.handleClickOutside = this.handleClickOutside.bind(this);
     this.handleIconClick = this.handleIconClick.bind(this);
   }
@@ -39,9 +39,6 @@ class CartOverlay extends Component {
       this.props.toggleCartOverlay();
     }
   };
-
-  
-
 
   findCurrencyIndex = (item) => {
     let currency = this.props.currency;
@@ -88,7 +85,14 @@ class CartOverlay extends Component {
         </div>
 
         {this.props.cartOverlayState === false ? null : (
-          <div ref={this.ref} className="cartOverLay">
+          <div
+            ref={this.ref}
+            className={`${
+              this.props.cartItems.length === 0
+                ? "cartOverLayEmbt"
+                : "cartOverLay"
+            }`}
+          >
             {this.props.cartItems.length === 0 ? (
               <h2>cart is empty</h2>
             ) : (
@@ -112,9 +116,18 @@ class CartOverlay extends Component {
                 ))}
               </div>
             )}
-            <div>
-              <button onClick={() => this.props.viewCart()}>View Bag</button>
-              <button>Checkout</button>
+            <div className="cartBtnsContainer">
+              <div>
+                <button
+                  className="viewBagBtn"
+                  onClick={() => this.props.viewCart()}
+                >
+                  View Bag
+                </button>
+              </div>
+              <div>
+                <button className="checkoutBtn">Checkout</button>
+              </div>
             </div>
             <div>
               <h4>

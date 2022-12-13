@@ -65,13 +65,13 @@ class CartItem extends Component {
         <div className="cartItemInfo">
           <div className="itemInfo">
             <>
-            <div>{this.props.item.itemInfo.brand}</div>
-            <div>{this.props.item.itemInfo.name}</div>
-            <h4>
-              {parseFloat(totalPrice.toFixed(2))} {currencySymbol}
-            </h4>
+              <div>{this.props.item.itemInfo.brand}</div>
+              <div>{this.props.item.itemInfo.name}</div>
+              <div className="price">
+                {parseFloat(totalPrice.toFixed(2))} {currencySymbol}
+              </div>
             </>
-            
+
             <div className="itemAttributes">
               {this.props.item.itemInfo.attributes.map((attr, i) => (
                 <div className="attrname" key={attr.id}>
@@ -81,17 +81,45 @@ class CartItem extends Component {
                       <div key={item.id}>
                         <div
                           className={`attrsRep ${
-                            isSelected(item, attr.name, attr.type) ? "attrSelected" : ""
+                            isSelected(item, attr.name, attr.type)
+                              ? "attrSelected"
+                              : ""
                           }`}
-                          style={{
-                            backgroundColor:
-                              attr.type === "swatch" ? item.value : "",
-                            border: attr.type === "swatch" ? "0.5px solid #cdcdcd" : "",
-                            paddingTop: attr.type === "swatch" ? "0" : "10px",
-                            paddingBottom: attr.type === "swatch" ? "0" : "10px",
-                            paddingLeft: attr.type === "swatch" ? "0" : "20px",
-                            paddingRight: attr.type === "swatch" ? "0" : "20px",
-                          }}
+                          style={
+                            this.props.miniCart
+                              ? {
+                                  backgroundColor:
+                                    attr.type === "swatch" ? item.value : "",
+                                  border:
+                                    attr.type === "swatch"
+                                      ? "0.5px solid #cdcdcd"
+                                      : "",
+                                  paddingTop:
+                                    attr.type === "swatch" ? "0" : "3px",
+                                  paddingBottom:
+                                    attr.type === "swatch" ? "0" : "3px",
+                                  paddingLeft:
+                                    attr.type === "swatch" ? "0" : "7px",
+                                  paddingRight:
+                                    attr.type === "swatch" ? "0" : "7px",
+                                }
+                              : {
+                                  backgroundColor:
+                                    attr.type === "swatch" ? item.value : "",
+                                  border:
+                                    attr.type === "swatch"
+                                      ? "0.5px solid #cdcdcd"
+                                      : "",
+                                  paddingTop:
+                                    attr.type === "swatch" ? "0" : "10px",
+                                  paddingBottom:
+                                    attr.type === "swatch" ? "0" : "10px",
+                                  paddingLeft:
+                                    attr.type === "swatch" ? "0" : "20px",
+                                  paddingRight:
+                                    attr.type === "swatch" ? "0" : "20px",
+                                }
+                          }
                         >
                           {attr.type === "swatch" ? (
                             <div
@@ -113,46 +141,56 @@ class CartItem extends Component {
             </div>
           </div>
 
-          <div className="quantityLayout">
-            <button
-              onClick={() => this.props.incrementQuantity(this.props.item)}
-            >
-              +
-            </button>
-            <h3>{this.props.item.quantity} </h3>
-            <button
-              onClick={() => this.props.decrementQuantity(this.props.item)}
-            >
-              -
-            </button>
-          </div>
-
-          <div>
-            <img
-              className="miniCartImg"
-              src={
-                this.props.item.itemInfo.gallery[this.state.currentImageIndex]
-              }
-            />
-            {this.props.item.itemInfo.gallery.length > 1 &&
-            this.props.miniCart === false ? (
-              <div className="miniCartImgNav">
+          <div className="incDecImgContainer">
+            <div className="quantityLayout">
+              <div>
                 <button
-                  onClick={() => this.imageSwitch("prev")}
-                  className="miniCartImgNavBtn"
+                  onClick={() => this.props.incrementQuantity(this.props.item)}
                 >
-                  {"<"}
-                </button>
-                <button
-                  onClick={() => this.imageSwitch("next")}
-                  className="miniCartImgNavBtn"
-                >
-                  {">"}
+                  +
                 </button>
               </div>
-            ) : (
-              ""
-            )}
+
+              <div>
+                <h3>{this.props.item.quantity} </h3>
+              </div>
+
+              <div>
+                <button
+                  onClick={() => this.props.decrementQuantity(this.props.item)}
+                >
+                  -
+                </button>
+              </div>
+            </div>
+
+            <div className="cartImgContainer">
+              <img
+                className="miniCartImg"
+                src={
+                  this.props.item.itemInfo.gallery[this.state.currentImageIndex]
+                }
+              />
+              {this.props.item.itemInfo.gallery.length > 1 &&
+              this.props.miniCart === false ? (
+                <div className="miniCartImgNav">
+                  <button
+                    onClick={() => this.imageSwitch("prev")}
+                    className="miniCartImgNavBtn"
+                  >
+                    {"<"}
+                  </button>
+                  <button
+                    onClick={() => this.imageSwitch("next")}
+                    className="miniCartImgNavBtn"
+                  >
+                    {">"}
+                  </button>
+                </div>
+              ) : (
+                ""
+              )}
+            </div>
           </div>
         </div>
       </div>
