@@ -65,8 +65,8 @@ class CartItem extends Component {
         <div className="cartItemInfo">
           <div className="itemInfo">
             <>
-              <div>{this.props.item.itemInfo.brand}</div>
-              <div>{this.props.item.itemInfo.name}</div>
+              <div className={`${this.props.miniCart ? "" : "mcItemBrand"}`} >{this.props.item.itemInfo.brand}</div>
+              <div className={`${this.props.miniCart ? "" : "mcItemName"}`}>{this.props.item.itemInfo.name}</div>
               <div className={`${this.props.miniCart ? "price" : "mainCartPrice"}`}>
                 {parseFloat(totalPrice.toFixed(2))} {currencySymbol}
               </div>
@@ -75,7 +75,7 @@ class CartItem extends Component {
             <div className="itemAttributes">
               {this.props.item.itemInfo.attributes.map((attr, i) => (
                 <div className="attrname" key={attr.id}>
-                  <div>{attr.name}:</div>
+                  <div className={`${this.props.miniCart ? "" : "attrName"}`}>{attr.name}:</div>
                   <div className="itemAtrrs">
                     {attr.items.map((item, i) => (
                       <div key={item.id}>
@@ -123,7 +123,7 @@ class CartItem extends Component {
                         >
                           {attr.type === "swatch" ? (
                             <div
-                              className={`colorBox ${
+                              className={`${this.props.miniCart ? "miniCartColorBox" : "colorBox"} ${
                                 isSelected(item, attr.name, attr.type)
                                   ? "colorSelected"
                                   : ""

@@ -1,8 +1,6 @@
 import { Component } from "react";
 import CartItem from "./cartItem";
 
-
-
 class Cart extends Component {
   findCurrencyIndex = (item) => {
     let currency = this.props.currency;
@@ -17,7 +15,7 @@ class Cart extends Component {
 
   render() {
     // console.log(this.props);
-     // console.log(this.props);
+    // console.log(this.props);
     // sum up total of cart items quantity
     let total = 0;
     this.props.cartItems.forEach((item) => {
@@ -42,14 +40,12 @@ class Cart extends Component {
         <div className="locationRep">
           <h2>CART</h2>
         </div>
-      
-      
+
         <div className="mainCart">
           {this.props.cartItems.length === 0 ? (
             <h2>cart is empty</h2>
           ) : (
             <div>
-              
               {this.props.cartItems.map((item, i) => (
                 <div className="mainCartItem" key={i}>
                   <div className="cartItemInfo">
@@ -66,27 +62,28 @@ class Cart extends Component {
               ))}
             </div>
           )}
-          <div>
-            <h3>Tax 21%: {`${parseFloat(tax.toFixed(2)) }`} $</h3>
-                <h3>Quantity: {total}</h3>
-              </div>
-          <div>
-          <div>
-            <h3>
-              Totall: {parseFloat(totalPrice.toFixed(2))}{" "}
-              {this.props.currency.symbol}
-            </h3>
-          </div>
+          <div className="cartTotallContainer">
+            <p>Tax 21%: <span>{`${parseFloat(tax.toFixed(2))}`} $</span></p>
             
+            <p>Quantity: <span>{total}</span></p>
+            <p>Totall: <span>{parseFloat(totalPrice.toFixed(2))}{" "}
+                {this.props.currency.symbol}</span></p>
+          </div>
+          <div>  
             <button className="orderBtn">ORDER</button>
           </div>
-          
         </div>
-        <div className={`${this.props.cartOverlayState === true && this.props.location === "Cart" ? "overcast" : ""}`}>
-              <p></p>
-            </div>
-      
-    </div>
+        <div
+          className={`${
+            this.props.cartOverlayState === true &&
+            this.props.location === "Cart"
+              ? "overcast"
+              : ""
+          }`}
+        >
+          <p></p>
+        </div>
+      </div>
     );
   }
 }
