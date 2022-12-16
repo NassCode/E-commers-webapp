@@ -4,10 +4,14 @@ body {
 
 .navbar {
   margin: 0px;
-  padding: 10px;
+  padding: 5px;
   position: relative;
   z-index: 3;
   background-color: #ffffff;
+}
+
+.navbarTab {
+  padding-bottom: 20px;
 }
 
 .container {
@@ -241,6 +245,7 @@ body {
 
 .activeTab {
   color: chartreuse;
+  border-bottom: chartreuse 2px solid;
 }
 
 .outOfStock {
@@ -352,10 +357,19 @@ body {
   /* align-items: center; */
 }
 
-.cartBtnsContainer {
+.cartTotalPrice {
+  width: 280px;
   display: flex;
   flex-direction: row;
-  gap: 15px;
+  justify-content: space-between;
+  align-items: center;
+}
+
+
+.cartBtnsContainer {
+  width: 280px;
+  display: flex;
+  flex-direction: row;
   justify-content: space-between;
   align-items: center;
   

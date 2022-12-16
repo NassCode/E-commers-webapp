@@ -116,24 +116,30 @@ class CartOverlay extends Component {
                 ))}
               </div>
             )}
+
+            <div className="cartTotalPrice">
+              <div>
+                <h4>Totall: </h4>
+              </div>
+              <div>
+                <h4>
+                  {parseFloat(totalPrice.toFixed(2))}{" "}
+                  {this.props.currency.symbol}
+                </h4>
+              </div>
+            </div>
             <div className="cartBtnsContainer">
               <div>
                 <button
                   className="viewBagBtn"
                   onClick={() => this.props.viewCart()}
                 >
-                  View Bag
+                  VIEW BAG
                 </button>
               </div>
               <div>
-                <button className="checkoutBtn">Checkout</button>
+                <button className="checkoutBtn">CHECKOUT</button>
               </div>
-            </div>
-            <div>
-              <h4>
-                Totall: {parseFloat(totalPrice.toFixed(2))}{" "}
-                {this.props.currency.symbol}
-              </h4>
             </div>
           </div>
         )}
