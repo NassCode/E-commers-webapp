@@ -141,8 +141,8 @@ class Attrs extends Component {
             </div>
             <div>
               {this.props.attrs.inStock ? (
-                <button onClick={() => this.props.handleSubmit()}>
-                add to cart
+                <button className="addToCartBtn" onClick={() => this.props.handleSubmit()}>
+                ADD TO CART
               </button>
               ) : (
                 <button disabled>Out of Stock</button>

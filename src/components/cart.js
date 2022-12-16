@@ -39,6 +39,9 @@ class Cart extends Component {
 
     return (
       <div>
+        <div className="locationRep">
+          <h2>CART</h2>
+        </div>
       
       
         <div className="mainCart">
@@ -64,8 +67,8 @@ class Cart extends Component {
             </div>
           )}
           <div>
-            <h3>Tax 21%: {`${parseFloat(tax.toFixed(2)) }`}</h3>
-                <h3>Quantity: {total} items </h3>
+            <h3>Tax 21%: {`${parseFloat(tax.toFixed(2)) }`} $</h3>
+                <h3>Quantity: {total}</h3>
               </div>
           <div>
           <div>
@@ -75,7 +78,7 @@ class Cart extends Component {
             </h3>
           </div>
             
-            <button>Checkout</button>
+            <button className="orderBtn">ORDER</button>
           </div>
           
         </div>

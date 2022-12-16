@@ -6,12 +6,9 @@ body {
   margin: 0px;
   padding: 5px;
   position: relative;
+
   z-index: 3;
   background-color: #ffffff;
-}
-
-.navbarTab {
-  padding-bottom: 20px;
 }
 
 .container {
@@ -55,6 +52,7 @@ body {
   row-gap: 50px;
   column-gap: 45px;
   margin-bottom: 30px;
+  padding-left: 85px;
 }
 
 .PLPimage {
@@ -193,7 +191,7 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(57, 55, 72, 0.22);
   z-index: 0;
 }
 
@@ -203,6 +201,12 @@ body {
   padding-right: 85px;
   width: auto;
   height: auto;
+}
+
+.locationRep {
+  position: relative;
+  padding-left: 85px;
+  z-index: 4;
 }
 
 .cart {
@@ -385,6 +389,32 @@ body {
   font-size: 14px;
 }
 
+.orderBtn {
+  background-color: #5ece7b;
+  border: none;
+  width: 279px;
+  height: 43px;
+  color: white;
+  padding: 13px 29px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 14px;
+}
+
+.addToCartBtn {
+  background-color: #5ece7b;
+  border: none;
+  color: white;
+  width: 292px;
+  height: 52px;
+  padding: 13px 29px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 14px;
+}
+
 .checkoutBtn {
   background-color: #5ece7b;
   border: none;
@@ -431,5 +461,4 @@ body {
   color: #ffffff;
   border: #000000 0px solid;
   background: rgba(0, 0, 0, 0.73);
-  
 }
