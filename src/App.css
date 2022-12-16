@@ -204,6 +204,24 @@ body {
   z-index: 1;
 }
 
+.cartOverLay2 {
+  position: absolute;
+  left: 70%;
+  width: auto;
+  height: 600px;
+  padding: 16px;
+  overflow: scroll;
+  overflow-x: hidden;
+  /* float: right; */
+
+  background-color: rgb(255, 255, 255);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  z-index: 1;
+}
+
 .overcast {
   position: absolute;
   top: 0;
@@ -555,6 +573,10 @@ body {
 }
 
 .cartTotallContainer p span {
+  font-weight: 700;
+}
+
+.myBagRep p span {
   font-weight: 700;
 }
 

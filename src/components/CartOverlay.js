@@ -90,15 +90,16 @@ class CartOverlay extends Component {
             className={`${
               this.props.cartItems.length === 0
                 ? "cartOverLayEmbt"
-                : "cartOverLay"
+                : `${this.props.cartItems.length > 2 ? "cartOverLay2" : "cartOverLay"}`
             }`}
           >
             {this.props.cartItems.length === 0 ? (
               <h2>cart is empty</h2>
             ) : (
               <div>
-                <div>
-                  <h3>My Bag: {total} items </h3>
+                <div className="myBagRep">
+                  <p><span>My Bag:</span> {total} items</p>
+                    
                 </div>
                 {this.props.cartItems.map((item, i) => (
                   <div className="cartItem" key={i}>
