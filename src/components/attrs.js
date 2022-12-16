@@ -80,14 +80,14 @@ class Attrs extends Component {
     return (
       <div className="Attrs">
         <div className="Attrs__container">
-          <div className="Attrs__container__img">
-            <h1>{this.props.attrs.brand}</h1>
-            <h5>{this.props.attrs.name}</h5>
+          <div>
+            <p className="itemBrand">{this.props.attrs.brand}</p>
+            <p className="itemName">{this.props.attrs.name}</p>
           </div>
           <div>
             {this.props.attrs.attributes.map((attr, i) => (
               <div key={attr.id}>
-                <h2>{attr.name}:</h2>
+                <div className="attrName">{attr.name.toUpperCase()}:</div>
                 <div className="itemAtrrs">
                   {attr.items.map((item, i) => (
                     <div key={item.id}>
@@ -134,7 +134,7 @@ class Attrs extends Component {
               </div>
             ))}
             <div>
-              <h3>{this.props.attrs.prices[0].__typename}:</h3>
+              <h3 className="price">{this.props.attrs.prices[0].__typename.toUpperCase()}:</h3>
               <h2>
                 {currencySymbol} {itemPrice}
               </h2>
@@ -145,11 +145,11 @@ class Attrs extends Component {
                 ADD TO CART
               </button>
               ) : (
-                <button disabled>Out of Stock</button>
+                <button className="outOfStockBtn" disabled>Out of Stock</button>
               )}
               
             </div>
-            <div
+            <div className="description"
               dangerouslySetInnerHTML={{ __html: this.props.attrs.description }}
             />
           </div>

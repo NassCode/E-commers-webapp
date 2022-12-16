@@ -59,7 +59,7 @@ class Item extends Component {
         : null}
           <div  onClick={() => this.props.selectPDPItem(this.props.productProps, "PDP")} className="PLPitemInfo">
             <span>{this.props.productProps.name}</span>
-            <span>
+            <span className="generalPrice">
               {itemPrice} {currencySymbol}
             </span>
           </div>

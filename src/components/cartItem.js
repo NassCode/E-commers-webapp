@@ -67,7 +67,7 @@ class CartItem extends Component {
             <>
               <div>{this.props.item.itemInfo.brand}</div>
               <div>{this.props.item.itemInfo.name}</div>
-              <div className="price">
+              <div className={`${this.props.miniCart ? "price" : "mainCartPrice"}`}>
                 {parseFloat(totalPrice.toFixed(2))} {currencySymbol}
               </div>
             </>
