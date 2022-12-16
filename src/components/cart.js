@@ -14,8 +14,6 @@ class Cart extends Component {
   };
 
   render() {
-    // console.log(this.props);
-    // console.log(this.props);
     // sum up total of cart items quantity
     let total = 0;
     this.props.cartItems.forEach((item) => {
@@ -63,13 +61,21 @@ class Cart extends Component {
             </div>
           )}
           <div className="cartTotallContainer">
-            <p>Tax 21%: <span>{`${parseFloat(tax.toFixed(2))}`} $</span></p>
-            
-            <p>Quantity: <span>{total}</span></p>
-            <p>Totall: <span>{parseFloat(totalPrice.toFixed(2))}{" "}
-                {this.props.currency.symbol}</span></p>
+            <p>
+              Tax 21%: <span>{`${parseFloat(tax.toFixed(2))}`} $</span>
+            </p>
+
+            <p>
+              Quantity: <span>{total}</span>
+            </p>
+            <p>
+              Totall:{" "}
+              <span>
+                {parseFloat(totalPrice.toFixed(2))} {this.props.currency.symbol}
+              </span>
+            </p>
           </div>
-          <div>  
+          <div>
             <button className="orderBtn">ORDER</button>
           </div>
         </div>

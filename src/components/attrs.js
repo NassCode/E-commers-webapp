@@ -7,23 +7,7 @@ class Attrs extends Component {
     attributes: [],
   };
 
-  // selected = (attr) => {
-  //   console.log(attr);
-  //   if (this.props.selectedAttrs.length === 0) {
-  //     if (attr.value === this.props.initialSelection.attributes[attr.name].value) {
-  //       return true;
-  //     } else {
-  //       return false;
-  //     }
-  //   } else {
-  //     if (attr.value === this.props.selectedAttrs.attributes[attr.name].value) {
-  //       return true;
-  //     } else {
-  //       return false;
-  //     }
-  //   }
 
-  // }
 
   findCurrency = (item) => {
     let currency = this.props.currency;
@@ -39,8 +23,6 @@ class Attrs extends Component {
   };
 
   render() {
-    // console.log(this.props.selectedAttrs);
-    // console.log(this.props.initialSelection);
     let { currencySymbol, itemPrice } = this.findCurrency(this.props.attrs);
     let isSelected = (item, name, type) => {
       if (
@@ -76,7 +58,6 @@ class Attrs extends Component {
       }
     };
 
-    // console.log(this.state);
     return (
       <div className="Attrs">
         <div className="Attrs__container">

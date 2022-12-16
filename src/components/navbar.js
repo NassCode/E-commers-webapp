@@ -5,8 +5,6 @@ import BrandIcon from "./icons/BrandIcon.svg";
 
 class Navbar extends Component {
   render() {
-    // console.log(this.props.cartOverlayState);
-
     return (
       <div className="navbar container">
         <div className="categoriesContainer">

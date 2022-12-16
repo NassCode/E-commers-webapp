@@ -3,14 +3,10 @@ import Item from "./Item";
 
 export default class PLP extends Component {
   render() {
-    // clean this up
-
     const { categories } = this.props;
     let category = categories.find(
       (category) => category.name === this.props.currentTab
     );
-
-    // console.log(this.props);
 
     return (
       <div>

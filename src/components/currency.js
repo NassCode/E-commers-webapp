@@ -1,6 +1,4 @@
 import React from "react";
-import { client } from "../index";
-import { CURRENCIES } from "../GraphQL/Queries";
 import collabs from "./icons/collabs.svg";
 import dropdown from "./icons/dropdown.svg";
 
@@ -26,42 +24,35 @@ class CurrencyMenu extends React.Component {
       !this.ref.current.contains(event.target) &&
       event.target.accessKey !== "currencyKey"
     ) {
-      // console.log("clicked outside and $ is pressed");
       this.props.toggleCurrencyMenu();
     } else if (
       this.ref.current &&
       !this.ref.current.contains(event.target) &&
       event.target.accessKey === "currencyKey"
     ) {
-      // console.log("clicked outside");
-      // this.props.toggleCurrencyMenu();
       return;
     }
   }
 
   handleIconClick = (event) => {
     if (this.iconRef.current && this.iconRef.current.contains(event.target)) {
-      // console.log("clicked currency");
       this.props.toggleCurrencyMenu();
     }
   };
 
   render() {
-    // console.log(this.props);
     return (
       <div>
         <div className="currencyIcon">
           <h3 ref={this.iconRef} accessKey="currencyKey">
-            {this.props.currency.symbol}
-            {" "}
+            {this.props.currency.symbol}{" "}
             <img
-            src={`${
-              this.props.currencyMenuState === false ? dropdown : collabs
-            }`}
-          />
+              src={`${
+                this.props.currencyMenuState === false ? dropdown : collabs
+              }`}
+              alt="currency icon"
+            />
           </h3>
-
-          
         </div>
         {this.props.currencyMenuState === false ? null : (
           <div className="currencyMenu" ref={this.ref}>
@@ -69,7 +60,8 @@ class CurrencyMenu extends React.Component {
               <div>
                 {this.props.currencies.map((currency, i) => {
                   return (
-                    <div className="currencyItem"
+                    <div
+                      className="currencyItem"
                       key={i}
                       onClick={() => this.props.selectCurrency(currency)}
                     >

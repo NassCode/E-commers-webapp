@@ -16,9 +16,7 @@ class PDP extends Component {
 
   setSelection = (id, name, value, type, displayValue) => {
     let preSelectedAttrs = [...this.state.initialSelection.attributes];
-    // console.log(preSelectedAttrs);
     // replace the value of the item in the state if it already exists
-    // let selectedAttrs = this.state.selectedAttrs;
     let selectedAttrs = preSelectedAttrs;
 
     let itemExists = false;
@@ -116,13 +114,16 @@ class PDP extends Component {
   }
 
   render() {
-    // console.log(this.state);
-    // console.log(this.props.pdpItem);
     return (
       <div>
         <div className="pdpcontainerT">
           <div className="backbutton">
-            <img className="backsvg" onClick={() => this.props.changeLocation("PLP")} src={back} alt="back" />
+            <img
+              className="backsvg"
+              onClick={() => this.props.changeLocation("PLP")}
+              src={back}
+              alt="back"
+            />
           </div>
           <div className="PDPcontainer">
             <div className="galleryContainer">
@@ -140,7 +141,6 @@ class PDP extends Component {
                 handleSubmit={this.handleSubmit}
                 currency={this.props.currency}
               />
-              {/* <button onClick={() => this.handleSubmit()}>Add To Cart</button> */}
             </div>
           </div>
         </div>

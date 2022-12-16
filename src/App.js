@@ -62,7 +62,6 @@ class App extends Component {
 
   addToCart = (item) => {
     // check if item is already in cart
-    // console.log(item);
     let itemInCart = this.state.cart.find((cartItem) => {
       return cartItem.itemInfo.id === item.itemInfo.id;
     });
@@ -81,13 +80,10 @@ class App extends Component {
           })
         );
       });
-      // console.log(newItemInCart);
 
       if (newItemInCart === undefined) {
-        // console.log(item);
         this.setState({ cart: [...this.state.cart, item] });
       } else {
-        // console.log(newItemInCart);
         let newCart = [...this.state.cart];
         let index = newCart.indexOf(newItemInCart);
         newCart[index].quantity++;
@@ -134,7 +130,6 @@ class App extends Component {
   };
 
   render() {
-    // console.log(this.state.cart);
     return (
       <CurrencyProvider value={this.state.currency}>
         <div>
@@ -159,11 +154,7 @@ class App extends Component {
             />
           </div>
           <div>
-            {
-              this.state.categories.length === 0 && <div>Loading...</div>
-              // implement loading screen
-              // implement what component to render based on state
-            }
+            {this.state.categories.length === 0 && <div>Loading...</div>}
           </div>
           <div>
             {this.state.location === "PLP" &&
@@ -190,7 +181,6 @@ class App extends Component {
                 currency={this.state.currency}
                 cartOverlayState={this.state.cartOverlay}
                 location={this.state.location}
-
               />
             ) : null}
 
@@ -203,7 +193,6 @@ class App extends Component {
                 currency={this.state.currency}
                 location={this.state.location}
                 cartOverlayState={this.state.cartOverlay}
-
               />
             ) : null}
           </div>

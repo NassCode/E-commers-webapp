@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import cartOutline from "./icons/cart-outline.svg";
 import CartItem from "./cartItem";
-import CurrencyContext from "../currencyContext";
 
 class CartOverlay extends Component {
   constructor(props) {
@@ -52,7 +51,6 @@ class CartOverlay extends Component {
   };
 
   render() {
-    // console.log(this.props);
     // sum up total of cart items quantity
     let total = 0;
     this.props.cartItems.forEach((item) => {
@@ -70,8 +68,6 @@ class CartOverlay extends Component {
       totalPrice += item.itemInfo.prices[currencyIndex].amount * item.quantity;
     });
 
-    // console.log(this.context);
-
     return (
       <div>
         <div className="iconWrapper">
@@ -80,6 +76,7 @@ class CartOverlay extends Component {
             ref={this.iconRef}
             accessKey="cartKey"
             src={cartOutline}
+            alt="cart icon"
           />
           {total === 0 ? null : <p className="miniCartCount">{total}</p>}
         </div>
@@ -90,7 +87,11 @@ class CartOverlay extends Component {
             className={`${
               this.props.cartItems.length === 0
                 ? "cartOverLayEmbt"
-                : `${this.props.cartItems.length > 2 ? "cartOverLay2" : "cartOverLay"}`
+                : `${
+                    this.props.cartItems.length > 2
+                      ? "cartOverLay2"
+                      : "cartOverLay"
+                  }`
             }`}
           >
             {this.props.cartItems.length === 0 ? (
@@ -98,8 +99,9 @@ class CartOverlay extends Component {
             ) : (
               <div>
                 <div className="myBagRep">
-                  <p><span>My Bag:</span> {total} items</p>
-                    
+                  <p>
+                    <span>My Bag:</span> {total} items
+                  </p>
                 </div>
                 {this.props.cartItems.map((item, i) => (
                   <div className="cartItem" key={i}>
