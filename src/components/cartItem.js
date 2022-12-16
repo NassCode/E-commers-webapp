@@ -174,18 +174,22 @@ class CartItem extends Component {
               {this.props.item.itemInfo.gallery.length > 1 &&
               this.props.miniCart === false ? (
                 <div className="miniCartImgNav">
-                  <button
-                    onClick={() => this.imageSwitch("prev")}
-                    className="miniCartImgNavBtn"
-                  >
-                    {"<"}
-                  </button>
-                  <button
-                    onClick={() => this.imageSwitch("next")}
-                    className="miniCartImgNavBtn"
-                  >
-                    {">"}
-                  </button>
+                  <div>
+                    <button
+                      onClick={() => this.imageSwitch("prev")}
+                      className="miniCartImgNavBtn"
+                    >
+                      {"<"}
+                    </button>
+                  </div>
+                  <div>
+                    <button
+                      onClick={() => this.imageSwitch("next")}
+                      className="miniCartImgNavBtn"
+                    >
+                      {">"}
+                    </button>
+                  </div>
                 </div>
               ) : (
                 ""
