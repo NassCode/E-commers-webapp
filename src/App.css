@@ -156,6 +156,8 @@ body {
   gap: 10px;
 }
 
+
+
 .cartOverLayEmbt {
   position: absolute;
   /* top: 10%; */
@@ -203,9 +205,17 @@ body {
   z-index: 0;
 }
 
+.mainCart {
+  padding-top: 50px;
+  padding-left: 85px;
+  padding-right: 85px;
+  width: auto;
+  height: auto;
+}
+
 .cart {
   position: absolute;
-  top: 10%;
+  top: 20%;
   width: auto;
   height: auto;
   margin-left: 101px;
@@ -400,6 +410,13 @@ body {
 .cartItem {
   width: 370px;
   padding-bottom: 15px;
+}
+
+
+.mainCartItem {
+  width: 100%;
+  padding-bottom: 25px;
+
 }
 
 .itemInfo {

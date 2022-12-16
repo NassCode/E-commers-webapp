@@ -41,14 +41,14 @@ class Cart extends Component {
       <div>
       
       
-        <div className="cart">
+        <div className="mainCart">
           {this.props.cartItems.length === 0 ? (
             <h2>cart is empty</h2>
           ) : (
             <div>
               
               {this.props.cartItems.map((item, i) => (
-                <div className="cartItem" key={i}>
+                <div className="mainCartItem" key={i}>
                   <div className="cartItemInfo">
                     <CartItem
                       item={item}

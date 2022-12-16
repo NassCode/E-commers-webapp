@@ -61,7 +61,7 @@ class CartItem extends Component {
     console.log(this.props.item.itemInfo.gallery);
 
     return (
-      <div className="cartItem">
+      <div className={`${this.props.miniCart ? "cartItem" : "mainCartItem"}`}>
         <div className="cartItemInfo">
           <div className="itemInfo">
             <>
