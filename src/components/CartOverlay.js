@@ -95,7 +95,7 @@ class CartOverlay extends Component {
             }`}
           >
             {this.props.cartItems.length === 0 ? (
-              <h2>cart is empty</h2>
+              <h2>Cart is Empty</h2>
             ) : (
               <div>
                 <div className="myBagRep">
@@ -141,7 +141,7 @@ class CartOverlay extends Component {
                 </button>
               </div>
               <div>
-                <button className="checkoutBtn">CHECKOUT</button>
+                <button className={`checkoutBtn ${this.props.cartItems.length === 0 ? "disabledC" : ""}`}>CHECKOUT</button>
               </div>
             </div>
           </div>

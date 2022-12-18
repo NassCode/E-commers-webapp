@@ -41,7 +41,7 @@ class Cart extends Component {
 
         <div className="mainCart">
           {this.props.cartItems.length === 0 ? (
-            <h2>cart is empty</h2>
+            <h2>Cart is Empty</h2>
           ) : (
             <div>
               {this.props.cartItems.map((item, i) => (
@@ -76,7 +76,7 @@ class Cart extends Component {
             </p>
           </div>
           <div>
-            <button className="orderBtn">ORDER</button>
+            <button className={`orderBtn ${this.props.cartItems.length === 0 ? "disabled" : ""}`}>ORDER</button>
           </div>
         </div>
         <div

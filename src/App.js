@@ -1,13 +1,10 @@
-import logo from "./logo.svg";
 import "./App.css";
-// import class component
 import React, { Component } from "react";
 import PLP from "./components/PLP";
 import Navbar from "./components/navbar";
 import { client } from "./index";
 import { CATEGORIES } from "./GraphQL/Queries";
 import PDP from "./components/PDP";
-import { CurrencyProvider } from "./currencyContext";
 import Cart from "./components/cart";
 
 class App extends Component {
@@ -25,23 +22,34 @@ class App extends Component {
   };
 
   componentDidMount() {
-    client
-      .query({
-        query: CATEGORIES,
-      })
-      .then((result) => {
-        let categoriesList = result.data.categories.map((category) => {
-          return category.name;
-        });
+    // check if local storage has an App key
+    if (localStorage.getItem("App")) {
+      // if it does, set the state to the value of the App key
+      this.setState(JSON.parse(localStorage.getItem("App")));
+    } else {
+      client
+        .query({
+          query: CATEGORIES,
+        })
+        .then((result) => {
+          let categoriesList = result.data.categories.map((category) => {
+            return category.name;
+          });
 
-        this.setState({
-          categories: result.data.categories,
-          currencies: result.data.currencies,
-          currency: result.data.currencies[0],
-          categoriesList: categoriesList,
-          currentTab: categoriesList[0],
+          this.setState({
+            categories: result.data.categories,
+            currencies: result.data.currencies,
+            currency: result.data.currencies[0],
+            categoriesList: categoriesList,
+            currentTab: categoriesList[0],
+          });
         });
-      });
+    }
+  }
+
+  //on update, set local storage to the current state
+  componentDidUpdate() {
+    localStorage.setItem("App", JSON.stringify(this.state));
   }
 
   tabChange = (tab) => {
@@ -131,7 +139,6 @@ class App extends Component {
 
   render() {
     return (
-      <CurrencyProvider value={this.state.currency}>
         <div>
           <div>
             <Navbar
@@ -197,7 +204,6 @@ class App extends Component {
             ) : null}
           </div>
         </div>
-      </CurrencyProvider>
     );
   }
 }

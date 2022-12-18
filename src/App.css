@@ -461,6 +461,11 @@ body {
   font-size: 14px;
 }
 
+.disabled {
+  background-color: #d5d5d5;
+  color: rgb(75, 75, 75);
+}
+
 .addToCartBtn {
   background-color: #5ece7b;
   border: none;
@@ -498,6 +503,12 @@ body {
   display: inline-block;
   font-size: 14px;
 }
+
+.disabledC {
+  background-color: #d5d5d5;
+  color: rgb(75, 75, 75);
+}
+
 
 .cartItem {
   width: 370px;
@@ -556,6 +567,8 @@ body {
 .itemName {
   font-size: 25px;
 }
+
+
 
 .itemBrand {
   font-size: 35px;
