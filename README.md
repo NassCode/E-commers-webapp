@@ -1,4 +1,4 @@
-This is a demo E-commers webapp.
+This is a demo E-commerce webapp.
 Built using react.js class components.
 
 live link:
