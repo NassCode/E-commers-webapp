@@ -2,8 +2,7 @@ import "./App.css";
 import React, { Component } from "react";
 import PLP from "./components/PLP";
 import Navbar from "./components/navbar";
-import { client } from "./index";
-import { CATEGORIES } from "./GraphQL/Queries";
+import myAppState from "./appState";
 import PDP from "./components/PDP";
 import Cart from "./components/cart";
 
@@ -27,23 +26,7 @@ class App extends Component {
       // if it does, set the state to the value of the App key
       this.setState(JSON.parse(localStorage.getItem("App")));
     } else {
-      client
-        .query({
-          query: CATEGORIES,
-        })
-        .then((result) => {
-          let categoriesList = result.data.categories.map((category) => {
-            return category.name;
-          });
-
-          this.setState({
-            categories: result.data.categories,
-            currencies: result.data.currencies,
-            currency: result.data.currencies[0],
-            categoriesList: categoriesList,
-            currentTab: categoriesList[0],
-          });
-        });
+      this.setState(myAppState)
     }
   }
 
