@@ -12,6 +12,25 @@ class PDP extends Component {
       attributes: [],
     },
     cart: this.props.cart,
+    currentImageIndex: 0,
+  };
+
+  imageSwitch = (direction) => {
+    let { currentImageIndex } = this.state;
+    let { gallery } = this.props.pdpItem;
+    if (direction === "next") {
+      if (currentImageIndex === gallery.length - 1) {
+        this.setState({ currentImageIndex: 0 });
+      } else {
+        this.setState({ currentImageIndex: currentImageIndex + 1 });
+      }
+    } else if (direction === "prev") {
+      if (currentImageIndex === 0) {
+        this.setState({ currentImageIndex: gallery.length - 1 });
+      } else {
+        this.setState({ currentImageIndex: currentImageIndex - 1 });
+      }
+    }
   };
 
   setSelection = (id, name, value, type, displayValue) => {
@@ -126,9 +145,45 @@ class PDP extends Component {
             />
           </div>
           <div className="PDPcontainer">
-            <div className="galleryContainer">
-              <PDPGallery pics={this.props.pdpItem.gallery} />
+            {
+              this.props.screen > 760 ? (
+                <div className="galleryContainer">
+                  <PDPGallery pics={this.props.pdpItem.gallery} />
+                </div>
+              ) : (
+                <div className="pdpMimageContainer">
+              <img
+                className="pdpMminiImage"
+                src={
+                  this.props.pdpItem.gallery[this.state.currentImageIndex]
+                }
+              />
+              {this.props.pdpItem.gallery.length > 1 ? (
+                <div className="miniCartImgNav">
+                  <div>
+                    <button
+                      onClick={() => this.imageSwitch("prev")}
+                      className="miniCartImgNavBtn"
+                    >
+                      {"<"}
+                    </button>
+                  </div>
+                  <div>
+                    <button
+                      onClick={() => this.imageSwitch("next")}
+                      className="miniCartImgNavBtn"
+                    >
+                      {">"}
+                    </button>
+                  </div>
+                </div>
+              ) : (
+                ""
+              )}
             </div>
+              )
+            }
+            
             <div>
               <Attrs
                 attrs={this.props.pdpItem}
@@ -142,6 +197,9 @@ class PDP extends Component {
                 currency={this.props.currency}
               />
             </div>
+
+            
+            
           </div>
         </div>
         <div

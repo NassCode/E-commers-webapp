@@ -6,11 +6,72 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@500&display=swap');
 
+@media only screen and (max-width: 600px) {
+  .navbarTab {
+    font-size: 12px !important;
+  }
+
+  .locationRep {
+    padding-left: 30px !important;
+    font-size: 16px !important;
+  }
+
+  .PLPitem {
+    height: 205px !important;
+    width: auto !important;
+  }
+
+  .PLPimageContainer {
+    width: auto !important;
+    max-width: 140px;
+    height: 153px !important;
+  }
+
+  .PLPcontainer {
+    row-gap: 40px !important;
+    column-gap: 30px !important;
+  }
+
+  .PLPitemInfo {
+    padding:10px 0 0 0 !important;
+  }
+
+  .mainCart {
+    padding-left: 30px !important;
+    padding-right: 30px !important;
+  }
+
+  .attrsRep {
+    padding: 4px 7px !important;
+  }
+
+  .mcItemBrand {
+    font-size: 24px !important;
+  }
+
+  .mcItemName {
+    font-size: 17px !important;
+  }
+
+  .PDPcontainer {
+    margin-left: 10px !important;
+  }
+
+
+
+}
+
 body {
   background-color: #ffffff;
   font-family: "Raleway", sans-serif;
   font-style: normal;
   font-size: 16px;
+}
+
+.brandIcon {
+  position: absolute;
+  left: 46%;
+  margin-top: 2px;
 }
 
 .navbar {
@@ -47,7 +108,8 @@ body {
   gap: 10px 20px;
   row-gap: 10px;
   column-gap: 20px;
-  padding-left: 100px;
+  padding-left: 10px;
+  margin-top: 20px;
 }
 
 .cartContainer {
@@ -58,8 +120,9 @@ body {
   gap: 10px 20px;
   row-gap: 10px;
   column-gap: 20px;
-  padding-right: 90px;
+  padding-right: 10px;
 }
+
 
 .PLPcontainer {
   position: relative;
@@ -71,7 +134,7 @@ body {
   row-gap: 50px;
   column-gap: 45px;
   margin-bottom: 30px;
-  padding-left: 85px;
+  padding-left: 5%;
 }
 
 .PLPimage {
@@ -172,12 +235,10 @@ body {
 
 .cartOverLayEmbt {
   position: absolute;
-  /* top: 10%; */
-  left: 77%;
+  right: 0px;
   width: auto;
   height: auto;
   padding: 16px;
-  /* float: right; */
 
   background-color: rgb(255, 255, 255);
   display: flex;
@@ -190,7 +251,7 @@ body {
 .cartOverLay {
   position: absolute;
   /* top: 10%; */
-  left: 70%;
+  right: 0;
   width: auto;
   height: auto;
   padding: 16px;
@@ -206,7 +267,7 @@ body {
 
 .cartOverLay2 {
   position: absolute;
-  left: 70%;
+  right: 0;
   width: auto;
   height: 600px;
   padding: 16px;
@@ -286,9 +347,26 @@ body {
   object-fit: contain;
 }
 
+
+.pdpMimageContainer {
+  position: absolute;
+  right: 0;
+  margin-top: 100px;
+  padding-right: 7px;
+  width: 140px;
+  height: 210px;
+}
+
+.pdpMminiImage {
+  width: 140px;
+  height: 210px;
+  object-fit: contain;
+}
+
+
 .activeTab {
   color: #5ece7b;
-
+  padding-bottom: 10px;
   border-bottom: #5ece7b 2px solid;
 }
 

@@ -9,15 +9,18 @@ class Navbar extends Component {
       <div className="navbar container">
         <div className="categoriesContainer">
           {this.props.tabs.map((tab, i) => (
-            <h4
-              className={` navbarTab ${
+            <div className="navbarTab">
+              <span
+              className={`${
                 tab === this.props.currentTab ? "activeTab" : ""
               }`}
               key={i}
               onClick={() => this.props.tabChange(tab)}
-            >
+              >
               {tab.toUpperCase()}
-            </h4>
+             </span>
+            </div>
+            
           ))}
         </div>
 

@@ -85,7 +85,7 @@ class CartItem extends Component {
                     {attr.items.map((item, i) => (
                       <div key={item.id}>
                         <div
-                          className={`attrsRep ${
+                          className={`${attr.type !== 'swatch' ? 'attrsRep': ''} ${
                             isSelected(item, attr.name, attr.type)
                               ? "attrSelected"
                               : ""

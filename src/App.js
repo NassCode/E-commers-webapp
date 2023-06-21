@@ -16,11 +16,15 @@ class App extends Component {
     currency: {},
     pdpItem: {},
     cart: [],
+    screen: window.innerWidth,
     cartOverlay: false,
     currencyMenu: false,
   };
 
+  handleResize = () => { this.setState({ screen: window.innerWidth }) }
+
   componentDidMount() {
+    window.addEventListener("resize", this.handleResize)
     // check if local storage has an App key
     if (localStorage.getItem("App")) {
       // if it does, set the state to the value of the App key
@@ -28,6 +32,10 @@ class App extends Component {
     } else {
       this.setState(myAppState)
     }
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener("resize", this.handleResize)
   }
 
   //on update, set local storage to the current state
@@ -120,7 +128,9 @@ class App extends Component {
     this.setState({ location: "Cart", cartOverlay: false });
   };
 
+  
   render() {
+    console.log(window.screen.width)
     return (
         <div>
           <div>
@@ -141,6 +151,7 @@ class App extends Component {
               changeLocation={this.changeLocation}
               viewCart={this.viewCart}
               location={this.state.location}
+              screen={this.state.screen}
             />
           </div>
           <div>
@@ -171,6 +182,7 @@ class App extends Component {
                 currency={this.state.currency}
                 cartOverlayState={this.state.cartOverlay}
                 location={this.state.location}
+                screen={this.state.screen}
               />
             ) : null}
 
